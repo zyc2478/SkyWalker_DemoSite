@@ -133,9 +133,24 @@
             box-shadow: 0 0 20px var(--primary);
         }
 
-        .row { display: flex; margin-bottom: 10rem; position: relative; align-items: center; perspective: 1000px; }
-        .col-left { flex: 1; padding-right: 6rem; text-align: right; position: relative; }
-        .col-right { flex: 1; padding-left: 6rem; position: relative; }
+        .row { display: flex; margin-bottom: 10rem; position: relative; align-items: center; perspective: 1000px; transition: all 0.5s ease; }
+        .row.collapsed { margin-bottom: 2rem; }
+        .row.collapsed .col-left, .row.collapsed .col-right { 
+            opacity: 0; 
+            max-height: 0; 
+            overflow: hidden; 
+            pointer-events: none; 
+            margin: 0;
+            padding: 0;
+            transform: scale(0.9) translateY(-20px);
+        }
+        .row.collapsed .dot {
+            border-color: var(--secondary);
+            box-shadow: 0 0 15px var(--secondary);
+        }
+        
+        .col-left { flex: 1; padding-right: 6rem; text-align: right; position: relative; transition: all 0.5s ease; }
+        .col-right { flex: 1; padding-left: 6rem; position: relative; transition: all 0.5s ease; }
 
         .dot {
             position: absolute;
@@ -149,7 +164,10 @@
             transform: translate(-50%, -50%);
             z-index: 10;
             box-shadow: 0 0 25px var(--primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
+        .dot:hover { transform: translate(-50%, -50%) scale(1.2); box-shadow: 0 0 35px var(--primary); }
 
         .exp-card {
             background: var(--card-bg);
@@ -481,7 +499,7 @@
             const row = document.createElement('div');
             row.className = 'row';
             row.innerHTML = `
-                <div class="dot"></div>
+                <div class="dot" onclick="this.parentElement.classList.toggle('collapsed')"></div>
                 <div class="col-left">
                     <div class="exp-card">
                         <span class="exp-date" contenteditable="true" oninput="autoSave()">${sectionData.exp.date}</span>
