@@ -179,6 +179,18 @@
         .work-card:hover { transform: rotateY(10deg) translateZ(30px); border-color: var(--secondary); }
         .work-image { width: 100%; height: 350px; background: #000; position: relative; cursor: pointer; overflow: hidden; }
         .work-image img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s ease; }
+        
+        .placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--primary);
+            font-size: 4rem;
+        }
+
         .work-content { padding: 2.5rem; }
         .work-tag {
             font-size: 0.8rem; font-weight: 900; color: var(--primary); background: rgba(0, 242, 255, 0.1);
@@ -572,8 +584,9 @@
                     currentData.sections.push(section);
                 });
 
-                // 更新全局 resumeData
-                resumeData[currentLang] = { sections: currentData.sections };
+                // 更新全局 resumeData，确保保留 theory 等其他属性
+                if (!resumeData[currentLang]) resumeData[currentLang] = {};
+                resumeData[currentLang].sections = currentData.sections;
                 
                 localStorage.setItem('skyWalkerShowI18nData', JSON.stringify({ lang: currentLang, resumeData, qr: currentData.qr }));
                 setTimeout(() => indicator.style.display = 'none', 1500);
