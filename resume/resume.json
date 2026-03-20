@@ -192,6 +192,11 @@
                 "title": "Business-Driven AI: Beyond the 'Silver Bullet' Myth",
                 "desc": "In the era of real-world AI deployment, tools alone are not a silver bullet. While marketing hype suggests AI can solve everything, the reality is that complex business scenarios require domain experts to 'get their hands dirty.' True transformation happens when business rules, auditing standards, and specialized corpora are integrated into private models and custom SOPs. Success isn't about the tool; it's about engineering the business decision chain into the heart of the AI.",
                 "tag": "SkyWalker Original"
+            },
+            {
+                "title": "The R&D Evolution: From Code-Centric to Business-First",
+                "desc": "AI is flattening the development landscape. Pure low-level and tool-based R&D are losing their competitive edge as AI turns code into a commodity. The future belongs to those who bridge the gap: developers who understand data fine-tuning and Prompt Engineering, and product managers who possess deep business insight. In this new era, 'hard work' in operations and business logic is more valuable than ever. To survive, R&D must evolve from being a tool-builder to a business-enabler.",
+                "tag": "SkyWalker Original"
             }
         ]
     },
@@ -387,6 +392,11 @@
             {
                 "title": "业务驱动的 AI：超越“银弹”神话",
                 "desc": "在 AI 进入真正业务驱动的时代，工具绝非解决所有问题的“银弹”。虽然营销话术让大众沉迷于 AI 的全能感，但解决复杂业务场景的关键在于专家“下场”。通过将业务规则、审核标准及海量业务语料喂给私有模型，训练出专属的决策 SOP，才能实现 AI 在业务侧的真正落地。一切领域问题终究是业务问题，而非纯粹的工具问题。",
+                "tag": "天行原创"
+            },
+            {
+                "title": "研发的进化：从代码中心到业务优先",
+                "desc": "AI 正在使开发领域变得扁平。纯底层和工具类的研发正在失去竞争力，因为 AI 已将代码变为了“日用品”。未来的生存空间属于那些能够跨越鸿沟的人：精通数据调优与提示词工程的研发者，以及具备深厚业务洞察力的产品经理。在这个新时代，曾经被视为“苦活累活”的业务运营逻辑反而更有价值。研发如果不能拥抱业务，将失去生存空间。",
                 "tag": "天行原创"
             }
         ]
