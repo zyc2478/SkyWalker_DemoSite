@@ -19,7 +19,7 @@
                     {
                         "id": "w1_2",
                         "tag": "Efficiency Orchestration",
-                        "title": "AI-Remark & Multi-Track Agent",
+                        "title": "AI Automated Annotation & Multi-Track Editing Agent",
                         "desc": "Extreme efficiency in post-production. Intelligent clip analysis and automated BGM orchestration agents reducing turnaround time by 90% while maintaining cinematic standards.",
                         "icon": "fa-bolt",
                         "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80"
@@ -38,13 +38,13 @@
                 "exp": {
                     "date": "2021 - 2023",
                     "title": "Big Data & AI Architect",
-                    "desc": "Spearheaded 'Wenhai', a premier national-grade OSINT intelligence platform. Engineered complex data fabrics to analyze multi-billion scale datasets across global social ecosystems with millisecond latency."
+                    "desc": "Spearheaded a premier national-grade OSINT big data platform. Engineered complex data fabrics to analyze multi-billion scale datasets across global social ecosystems with millisecond latency."
                 },
                 "works": [
                     {
                         "id": "w2_1",
                         "tag": "OSINT Intelligence",
-                        "title": "Wenhai Strategic Decision Platform",
+                        "title": "Public Opinion Big Data Platform",
                         "desc": "The benchmark for public opinion monitoring in China. Empowering government entities with real-time trend detection and risk mitigation through deep data mining.",
                         "icon": "fa-globe",
                         "image": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80"
@@ -87,8 +87,8 @@
             {
                 "exp": {
                     "date": "2012 - 2018",
-                    "title": "Ad-Tech & Global Data Architect",
-                    "desc": "Architected the commercial engine of Funshion. Built a multi-billion GMV programmatic advertising ecosystem and a unified global data platform powered by real-time AI recommendations."
+                    "title": "Programmatic Advertising Architecture",
+                    "desc": "Architected high-performance commercial engines. Built a multi-billion GMV programmatic advertising ecosystem and a unified global data platform powered by real-time AI recommendations."
                 },
                 "works": [
                     {
@@ -122,7 +122,7 @@
                         "title": "National Airport Media Network",
                         "desc": "Unified digital display infrastructure across major aviation hubs, creating China's largest premium airport advertising network.",
                         "icon": "fa-plane-departure",
-                        "image": "https://images.unsplash.com/photo-1436491865332-7a61a109c0f2?auto=format&fit=crop&w=800&q=80"
+                        "image": "https://images.unsplash.com/photo-1530521954074-e64f6810b32d?auto=format&fit=crop&w=800&q=80"
                     }
                 ]
             },
@@ -130,7 +130,7 @@
                 "exp": {
                     "date": "2002 - 2009",
                     "title": "Enterprise BI & Data Architect",
-                    "desc": "Pioneered large-scale BI solutions at Beijing Shengtang. Specialized in the architectural fusion of top-tier BI platforms (Actuate, Cognos, BO) with mission-critical financial ERP systems."
+                    "desc": "Pioneered large-scale BI solutions. Specialized in the architectural fusion of top-tier BI platforms (Actuate, Cognos, BO) with mission-critical financial ERP systems."
                 },
                 "works": [
                     {
@@ -147,7 +147,7 @@
                         "title": "Decision Support & Data Valorization",
                         "desc": "Fusing BI analytics with early Big Data methodologies to drive business growth and precise strategic decision-making in the banking sector.",
                         "icon": "fa-chart-line",
-                        "image": "https://images.unsplash.com/photo-1551288049-bbbda536339a?auto=format&fit=crop&w=800&q=80"
+                        "image": "https://images.unsplash.com/photo-1518186239751-6467fd583b7a?auto=format&fit=crop&w=800&q=80"
                     }
                 ]
             }
@@ -156,6 +156,16 @@
             {
                 "title": "The Quantum Leap in AI Video: From Sora to 'Sentient' Pixels",
                 "desc": "Sora represents a pivotal moment, transcending the uncanny valley to achieve a new level of physical-world coherence. This is not merely a technological leap but a philosophical one. The future of AI video lies not in 'text-to-video' but in 'intent-to-cinema,' where the AI, acting as a virtual director, comprehends and executes nuanced emotional and creative directives. We are on the cusp of an era where pixels will not just be rendered, but will feel 'sentient.'",
+                "tag": "SkyWalker Original"
+            },
+            {
+                "title": "The Soul of Brand AIGC: Deep Symbiosis of AI and Human Intelligence (HI)",
+                "desc": "The essence of brand content creation lies in the fusion of extreme AI technology and high-level Human Intelligence (HI). Authentic brand style is not just generated; it is sculpted through HI's profound insight into tone, emotion, culture, and storytelling architecture. By training on massive brand datasets to extract multimodal elements—text, imagery, sound, color, and rhythm (the 'Five Dimensions of Brand Expression')—we redefine video structure and narrative arcs to forge truly unique and recognizable brand identities.",
+                "tag": "SkyWalker Original"
+            },
+            {
+                "title": "The AI Social Content Revolution: The Rise of Synthetic Presence",
+                "desc": "We are witnessing a paradigm shift where AI will eventually generate over 70% to 90% of social media content. While top-tier human creators will retain a unique niche, AI is evolving to create its own distinct personas and stylistic signatures. As AI Agents become increasingly human-centric and diverse, the digital landscape will be populated by 'Synthetic Influencers' that offer hyper-personalized, consistent, and emotionally resonant content at an global scale.",
                 "tag": "SkyWalker Original"
             },
             {
@@ -176,6 +186,11 @@
             {
                 "title": "The Art and Science of Model Fine-Tuning: Beyond Technique to Philosophy",
                 "desc": "Fine-tuning is more than a technique; it's an art form. This article explores the philosophical differences between mainstream fine-tuning schools of thought, such as LoRA and QLoRA. It shares core strategies for selecting and optimizing fine-tuning approaches in various business contexts, achieving the perfect equilibrium between model capability, cost, and performance. It's about sculpting the model's soul, not just adjusting its parameters.",
+                "tag": "SkyWalker Original"
+            },
+            {
+                "title": "Business-Driven AI: Beyond the 'Silver Bullet' Myth",
+                "desc": "In the era of real-world AI deployment, tools alone are not a silver bullet. While marketing hype suggests AI can solve everything, the reality is that complex business scenarios require domain experts to 'get their hands dirty.' True transformation happens when business rules, auditing standards, and specialized corpora are integrated into private models and custom SOPs. Success isn't about the tool; it's about engineering the business decision chain into the heart of the AI.",
                 "tag": "SkyWalker Original"
             }
         ]
@@ -200,7 +215,7 @@
                     {
                         "id": "w1_2",
                         "tag": "极致效能编排",
-                        "title": "AI-Remark 与多轨 Agent",
+                        "title": "AI自动化标注 与多轨剪辑Agent",
                         "desc": "后期制作的效能革命。通过智能片段分析与 BGM 自动编排 Agent，在保持电影级标准的同时缩短 90% 的交付周期。",
                         "icon": "fa-bolt",
                         "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80"
@@ -219,13 +234,13 @@
                 "exp": {
                     "date": "2021 - 2023",
                     "title": "大数据与 AI 架构专家",
-                    "desc": "主导开发国家级舆情情报平台“文海”。构建复杂数据织网，实现对全球社交生态数十亿级海量数据的毫秒级深度解析与研判。"
+                    "desc": "主导开发国家级“舆情大数据平台”。构建复杂数据织网，实现对全球社交生态数十亿级海量数据的毫秒级深度解析与研判。"
                 },
                 "works": [
                     {
                         "id": "w2_1",
                         "tag": "情报级监测",
-                        "title": "文海战略决策情报平台",
+                        "title": "舆情大数据平台",
                         "desc": "中国舆情监测领域的行业标杆。通过深度数据挖掘，为政府决策提供实时的热点预警与风险规避支撑。",
                         "icon": "fa-globe",
                         "image": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80"
@@ -268,8 +283,8 @@
             {
                 "exp": {
                     "date": "2012 - 2018",
-                    "title": "广告技术与全球数据架构师 (风行网)",
-                    "desc": "主导风行网商业化引擎构建。打造了支撑数十亿 GMV 的程序化广告生态，以及基于实时 AI 推荐的统一全球化数据中台。"
+                    "title": "广告程序化投放架构",
+                    "desc": "主导商业化引擎构建。打造了支撑数十亿 GMV 的程序化广告生态，以及基于实时 AI 推荐的统一全球化数据中台。"
                 },
                 "works": [
                     {
@@ -303,15 +318,15 @@
                         "title": "全国机场屏幕联播网",
                         "desc": "统一管理全国各大航空枢纽的数字显示基础设施，构建了中国最大的机场高端媒体资源池。",
                         "icon": "fa-plane-departure",
-                        "image": "https://images.unsplash.com/photo-1436491865332-7a61a109c0f2?auto=format&fit=crop&w=800&q=80"
+                        "image": "https://images.unsplash.com/photo-1530521954074-e64f6810b32d?auto=format&fit=crop&w=800&q=80"
                     }
                 ]
             },
             {
                 "exp": {
                     "date": "2002 - 2009",
-                    "title": "企业级 BI 与数据架构师 (北京盛唐)",
-                    "desc": "在北京盛唐主导了早期大规模 BI 解决方案。深耕 Actuate、Cognos、BO 等顶尖 BI 平台与核心金融 ERP 系统的架构融合与优化。"
+                    "title": "企业级 BI 与数据架构师",
+                    "desc": "主导了早期大规模 BI 解决方案。深耕 Actuate、Cognos、BO 等顶尖 BI 平台与核心金融 ERP 系统的架构融合与优化。"
                 },
                 "works": [
                     {
@@ -328,7 +343,7 @@
                         "title": "决策支持与数据价值挖掘",
                         "desc": "融合 BI 分析与早期大数据方法论，为银行机构实现精准的业务决策支持与精细化运营赋能。",
                         "icon": "fa-chart-line",
-                        "image": "https://images.unsplash.com/photo-1551288049-bbbda536339a?auto=format&fit=crop&w=800&q=80"
+                        "image": "https://images.unsplash.com/photo-1518186239751-6467fd583b7a?auto=format&fit=crop&w=800&q=80"
                     }
                 ]
             }
@@ -340,13 +355,23 @@
                 "tag": "天行原创"
             },
             {
+                "title": "品牌 AIGC 的灵魂：AI 与人类智慧 (HI) 的深度共生",
+                "desc": "品牌内容创作的核心在于 AI 技术的极致应用与人类智慧 (HI) 的高度投入。真正的品牌风格并非简单的生成，而是源于 HI 对品牌调性、情感、文化及叙事脉络的深度洞察。通过对海量品牌素材的大规模训练，精准提取“文图音色运”等全模态要素，重构视频结构、讲述方法与故事脉络，才能打造出真正具有专属辨识度的品牌视频。",
+                "tag": "天行原创"
+            },
+            {
+                "title": "AI 社交内容革命：合成存在感的崛起",
+                "desc": "我们正处于一个范式转移的边缘，未来社交媒体内容创作的 70% 甚至 90% 以上将由 AI 逐步替代。虽然头部人类创作者仍将保持独特地位，但 AI 正在进化出自己的人设、独有风格和情感共鸣力。随着 AI Agent 越来越拟人化，数字世界将涌现出海量的“合成影响力者”，以全球化规模提供高度个性化且持续稳定的内容输出。",
+                "tag": "天行原创"
+            },
+            {
                 "title": "AIGC 自动化工作流：构建指数级效率的创意工厂",
                 "desc": "AIGC 的真正革命不在于单个工具，而在于创建一个无缝、自动化的工作流。本文描绘了一个闭环系统的蓝图——从市场洞察、创意构思到多模态内容制作和全渠道分发。通过编排 Agent，我们可以构建一个以指数级效率运作的创意工厂，将人类的才能解放出来，专注于高层战略和创新。",
                 "tag": "天行原创"
             },
             {
                 "title": "三位一体：大数据、AI 与 Agent 的融合构想",
-                "desc": "本文提出了一个未来的“战略决策操作系统”构想。该系统将利用大数据实现全景态势感知，通过 AI 进行深度预测分析和决策，并部署自主 Agent 集群进行端到端的任务执行和反馈。这三者构成了一个自我优化的闭环，能够以前所未有的速度和智能应对复杂的商业挑战。",
+                "desc": "本文提出了一个未来的“战略决策操作系统”构想。该系统将利用大数据实现全景态势感知，通过 AI 进行深度预测分析 and 决策，并部署自主 Agent 集群进行端到端的任务执行 and 反馈。这三者构成了一个自我优化的环，能够以前所未有的速度和智能应对复杂的商业挑战。",
                 "tag": "天行原创"
             },
             {
@@ -357,6 +382,11 @@
             {
                 "title": "模型微调的艺术与科学：超越技术，走向哲学",
                 "desc": "微调不仅是一门技术，更是一门艺术。本文探讨了 LoRA 和 QLoRA 等主流微调流派之间的哲学差异。它分享了在不同业务场景中选择和优化微调策略的核心技巧，以实现模型能力、成本和性能的完美平衡。这关乎于塑造模型的“灵魂”，而不仅仅是调整其参数。",
+                "tag": "天行原创"
+            },
+            {
+                "title": "业务驱动的 AI：超越“银弹”神话",
+                "desc": "在 AI 进入真正业务驱动的时代，工具绝非解决所有问题的“银弹”。虽然营销话术让大众沉迷于 AI 的全能感，但解决复杂业务场景的关键在于专家“下场”。通过将业务规则、审核标准及海量业务语料喂给私有模型，训练出专属的决策 SOP，才能实现 AI 在业务侧的真正落地。一切领域问题终究是业务问题，而非纯粹的工具问题。",
                 "tag": "天行原创"
             }
         ]

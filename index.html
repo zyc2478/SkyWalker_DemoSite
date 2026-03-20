@@ -38,6 +38,21 @@
             background: radial-gradient(circle at 50% 50%, #0a0a1a 0%, #050505 100%);
         }
 
+        #spotlight {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            background: radial-gradient(
+                600px circle at var(--x, 50%) var(--y, 50%),
+                rgba(0, 242, 255, 0.05),
+                transparent 40%
+            );
+        }
+
         nav {
             position: fixed;
             top: 0;
@@ -201,20 +216,18 @@
     </style>
 </head>
 <body>
+        <div id="spotlight"></div>
     <canvas id="bg-canvas"></canvas>
     <nav>
         <div class="logo">SkyWalker · AI Pioneer</div>
         <div style="display: flex; gap: 2rem; align-items: center;">
             <div style="display: flex; gap: 2rem; font-weight: 800; font-size: 0.8rem;">
-                <a href="#home" id="nav-core" style="color: var(--primary); text-decoration: none;">ARCHIVE</a>
-                <a href="#mainLayout" id="nav-timeline" style="color: #fff; text-decoration: none;">TIMELINE</a>
+                <a href="#mainLayout" id="nav-timeline" style="color: var(--primary); text-decoration: none;">TIMELINE</a>
                 <a href="#theory" id="nav-theory" style="color: #fff; text-decoration: none;">THEORY</a>
                 <a href="#base" id="nav-base" style="color: #fff; text-decoration: none;">THE BASE</a>
                 <a href="#contact" id="nav-contact" style="color: #fff; text-decoration: none;">CONNECT</a>
             </div>
-            <a href="./resume/曾宇超的简历.pdf" target="_blank" class="lang-switch" style="text-decoration: none; display: flex; align-items: center; gap: 0.5rem; background: rgba(0, 242, 255, 0.1);" id="resume-btn">
-                <i class="fas fa-file-pdf"></i> <span id="resume-text">RESUME</span>
-            </a>
+            <button class="lang-switch" style="border-color: #ff4b2b; color: #ff4b2b;" onclick="if(confirm('Reset all edits to defaults?')) { localStorage.removeItem('skyWalkerShowI18nData'); location.reload(); }">RESET</button>
             <button class="lang-switch" onclick="toggleLanguage()" id="lang-btn">中文</button>
         </div>
     </nav>
@@ -318,13 +331,12 @@
                 heroTitle: "ARCHITECTING THE FUTURE",
                 heroSubtitle: "Multimodal AIGC Specialist · Big Data Architect · SaaS & E-commerce Expert · AI Agent Orchestrator · Model Training Expert",
                 heroQuote: '"Driving the next generation of intelligence through multimodal synergy and autonomous agent orchestration."',
-                navCore: "ARCHIVE", navTimeline: "TIMELINE", navTheory: "THEORY", navBase: "THE BASE", navContact: "CONNECT",
+                navTimeline: "TIMELINE", navTheory: "THEORY", navBase: "THE BASE", navContact: "CONNECT",
                 langBtn: "中文", addChapter: "INITIALIZE NEW CHAPTER", addWork: "ADD PROJECT RESULT",
                 contactTitle: "Connect with Me", contactSub: "Scan to connect on WeChat",
                 contactDesc: "Open for high-impact collaborations and freelance opportunities in AI & Big Data.",
                 contactBadge: "Freelance & Consulting · Global Delivery",
                 saveText: "DATA SYNCED",
-                resumeText: "RESUME",
                 theoryTitle: "AI Theories & Perspectives",
                 baseTitle: "The Base - Code & Creations",
                 baseDesc: "My GitHub is the foundation of all my creations. Explore the code that powers these projects.",
@@ -334,13 +346,12 @@
                 heroTitle: "重塑智能边界",
                 heroSubtitle: "全模态 AIGC 专家 · 大数据架构师 · SaaS 与电商系统专家 · AI Agent 自动化专家 · 模型训练专家",
                 heroQuote: "“通过多模态协同与自主 Agent 编排，驱动下一代智能革命。”",
-                navCore: "核心", navTimeline: "时间轴", navTheory: "理论", navBase: "基地", navContact: "联系",
+                navTimeline: "时间轴", navTheory: "理论", navBase: "基地", navContact: "联系",
                 langBtn: "English", addChapter: "初始化新篇章", addWork: "添加项目成果",
                 contactTitle: "连接未来 · 与我合作", contactSub: "扫描二维码添加微信",
                 contactDesc: "期待在 AIGC 与大数据领域展开深度合作，欢迎兼职邀约。",
                 contactBadge: "专注兼职合作 · 全球交付",
                 saveText: "数据已同步",
-                resumeText: "简历",
                 theoryTitle: "AI 理论与经典观点",
                 baseTitle: "The Base - 代码基地与创作",
                 baseDesc: "我的 GitHub 是所有创作的基石。在这里，探索驱动这些项目的代码。",
@@ -389,7 +400,6 @@
             document.getElementById('hero-title').innerText = t.heroTitle;
             document.getElementById('hero-subtitle').innerText = t.heroSubtitle;
             document.getElementById('hero-quote').innerText = t.heroQuote;
-            document.getElementById('nav-core').innerText = t.navCore;
             document.getElementById('nav-timeline').innerText = t.navTimeline;
             document.getElementById('nav-contact').innerText = t.navContact;
             document.getElementById('lang-btn').innerText = t.langBtn;
@@ -398,7 +408,6 @@
             document.getElementById('contact-sub').innerText = t.contactSub;
             document.getElementById('contact-desc').innerText = t.contactDesc;
             document.getElementById('contact-badge').innerText = t.contactBadge;
-            document.getElementById('resume-text').innerText = t.resumeText;
             document.getElementById('theory-title').innerText = t.theoryTitle;
             document.getElementById('base-title').innerText = t.baseTitle;
             document.getElementById('base-desc').innerText = t.baseDesc;
@@ -446,7 +455,7 @@
         }
         window.addEventListener('resize', initCanvas); initCanvas(); drawParticles();
 
-        // Spotlight effect
+        // Spotlight Effect
         const spotlight = document.getElementById('spotlight');
         window.addEventListener('mousemove', e => {
             spotlight.style.setProperty('--x', e.clientX + 'px');
@@ -489,7 +498,7 @@
                 <label class="btn-upload"><i class="fas fa-camera"></i><input type="file" accept="image/*" onchange="uploadImage(this, '${workId}-img')"></label>
                 <div class="work-image">
                     <div class="placeholder" style="${workData.image ? 'display:none' : ''}"><i class="fas ${workData.icon || 'fa-bolt'}"></i></div>
-                    <img id="${workId}-img" src="${workData.image || ''}" style="${workData.image ? 'display:block' : 'display:none'}">
+                    <img id="${workId}-img" src="${workData.image || ''}" style="${workData.image ? 'display:block' : 'display:none'}" onerror="this.style.display='none'; this.parentElement.querySelector('.placeholder').style.display='flex';">
                 </div>
                 <div class="work-content">
                     <span class="work-tag" contenteditable="true" oninput="autoSave()">${workData.tag}</span>
@@ -551,7 +560,14 @@
                     const section = { exp: { date: row.querySelector('.exp-date').innerText, title: row.querySelector('.exp-title').innerText, desc: row.querySelector('.exp-desc').innerText }, works: [] };
                     row.querySelectorAll('.work-card').forEach(card => {
                         const img = card.querySelector('img');
-                        section.works.push({ id: card.id, tag: card.querySelector('.work-tag').innerText, title: card.querySelector('.work-title').innerText, desc: card.querySelector('.work-desc').innerText, image: img.src.startsWith('data:') ? img.src : null, icon: card.querySelector('.placeholder i').classList[1] });
+                        section.works.push({ 
+                            id: card.id, 
+                            tag: card.querySelector('.work-tag').innerText, 
+                            title: card.querySelector('.work-title').innerText, 
+                            desc: card.querySelector('.work-desc').innerText, 
+                            image: (img.src && !img.src.includes('localhost')) ? img.src : null, 
+                            icon: card.querySelector('.placeholder i').classList[1] 
+                        });
                     });
                     currentData.sections.push(section);
                 });
