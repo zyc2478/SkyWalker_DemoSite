@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyWalker Show - Pioneering the AI Frontier</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00f2ff;
+            --secondary: #7000ff;
+            --accent: #ff007a;
+            --bg: #050505;
+            --card-bg: rgba(20, 20, 30, 0.7);
+            --text-light: #ffffff;
+            --text-muted: #a0a0c0;
+            --border: rgba(0, 242, 255, 0.15);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Orbitron', 'PingFang SC', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 50% 50%, #0a0a1a 0%, #050505 100%);
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
+        }
+
+        .lang-switch {
+            padding: 0.5rem 1.2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            border-radius: 999px;
+            cursor: pointer;
+            font-weight: 800;
+            font-size: 0.8rem;
+            transition: all 0.3s;
+        }
+
+        .lang-switch:hover { background: var(--primary); color: #000; box-shadow: 0 0 15px var(--primary); }
+
+        .hero {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+            background: linear-gradient(to bottom, #fff 0%, #00f2ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 30px rgba(0, 242, 255, 0.3));
+        }
+
+        .main-container {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .main-container::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, var(--primary), var(--secondary), var(--accent), transparent);
+            transform: translateX(-50%);
+            opacity: 0.4;
+            box-shadow: 0 0 20px var(--primary);
+        }
+
+        .row { display: flex; margin-bottom: 10rem; position: relative; align-items: center; perspective: 1000px; }
+        .col-left { flex: 1; padding-right: 6rem; text-align: right; position: relative; }
+        .col-right { flex: 1; padding-left: 6rem; position: relative; }
+
+        .dot {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 24px;
+            height: 24px;
+            background: #000;
+            border: 4px solid var(--primary);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            box-shadow: 0 0 25px var(--primary);
+        }
+
+        .exp-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 2rem;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(15px);
+            transition: all 0.5s;
+            transform-style: preserve-3d;
+        }
+
+        .exp-card:hover { transform: rotateY(-10deg) translateZ(20px); border-color: var(--primary); }
+        .exp-date { font-size: 1.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem; display: block; outline: none; }
+        .exp-title { font-size: 2rem; font-weight: 900; margin-bottom: 1rem; color: #fff; outline: none; }
+        .exp-desc { font-size: 1.1rem; color: var(--text-muted); outline: none; text-align: justify; }
+
+        .work-card {
+            background: var(--card-bg);
+            border-radius: 2rem;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            transform-style: preserve-3d;
+            margin-bottom: 2rem;
+        }
+
+        .work-card:hover { transform: rotateY(10deg) translateZ(30px); border-color: var(--secondary); }
+        .work-image { width: 100%; height: 350px; background: #000; position: relative; cursor: pointer; overflow: hidden; }
+        .work-image img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s ease; }
+        .work-content { padding: 2.5rem; }
+        .work-tag {
+            font-size: 0.8rem; font-weight: 900; color: var(--primary); background: rgba(0, 242, 255, 0.1);
+            padding: 0.4rem 1.2rem; border-radius: 999px; margin-bottom: 1.5rem; display: inline-block;
+        }
+        .work-title { font-size: 1.6rem; font-weight: 900; margin-bottom: 0.8rem; color: #fff; outline: none; }
+        .work-desc { color: var(--text-muted); font-size: 1rem; outline: none; line-height: 1.7; }
+
+        .contact-section { padding: 8rem 2rem; text-align: center; border-top: 1px solid var(--border); }
+        .contact-container { max-width: 800px; margin: 0 auto; background: var(--card-bg); padding: 4rem; border-radius: 3rem; border: 1px solid var(--border); backdrop-filter: blur(20px); }
+        .qr-placeholder { width: 220px; height: 220px; background: #fff; margin: 0 auto 2.5rem; padding: 10px; border-radius: 1.5rem; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+        .qr-placeholder img { width: 100%; height: 100%; object-fit: contain; }
+        .qr-placeholder i { font-size: 4rem; color: #000; }
+        .freelance-badge { display: inline-block; background: linear-gradient(135deg, var(--primary), var(--secondary)); padding: 0.8rem 2.5rem; border-radius: 999px; font-weight: 800; margin-top: 1.5rem; }
+
+        .btn-add-timeline {
+            display: flex; align-items: center; justify-content: center; gap: 1.5rem; margin: 5rem auto; padding: 2rem 4rem;
+            background: rgba(0, 242, 255, 0.05); color: var(--primary); border: 2px dashed var(--primary); border-radius: 2rem;
+            font-size: 1.2rem; font-weight: 900; cursor: pointer; transition: all 0.4s;
+        }
+        .btn-add-timeline:hover { background: var(--primary); color: #000; }
+
+        .btn-upload {
+            position: absolute; top: 1.5rem; right: 1.5rem; width: 50px; height: 55px; background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 20;
+        }
+
+        @media (max-width: 1024px) {
+            .main-container::before { left: 40px; }
+            .dot { left: 40px; }
+            .row { flex-direction: column; }
+            .col-left, .col-right { width: 100%; padding-left: 90px; padding-right: 2rem; text-align: left; }
+        }
+        input[type="file"] { display: none; }
+    </style>
+</head>
+<body>
+    <canvas id="bg-canvas"></canvas>
+    <nav>
+        <div class="logo">SkyWalker · AI Pioneer</div>
+        <div style="display: flex; gap: 2rem; align-items: center;">
+            <div style="display: flex; gap: 2rem; font-weight: 800; font-size: 0.8rem;">
+                <a href="#home" id="nav-core" style="color: var(--primary); text-decoration: none;">ARCHIVE</a>
+                <a href="#mainLayout" id="nav-timeline" style="color: #fff; text-decoration: none;">TIMELINE</a>
+                <a href="#theory" id="nav-theory" style="color: #fff; text-decoration: none;">THEORY</a>
+                <a href="#base" id="nav-base" style="color: #fff; text-decoration: none;">THE BASE</a>
+                <a href="#contact" id="nav-contact" style="color: #fff; text-decoration: none;">CONNECT</a>
+            </div>
+            <a href="./resume/曾宇超的简历.pdf" target="_blank" class="lang-switch" style="text-decoration: none; display: flex; align-items: center; gap: 0.5rem; background: rgba(0, 242, 255, 0.1);" id="resume-btn">
+                <i class="fas fa-file-pdf"></i> <span id="resume-text">RESUME</span>
+            </a>
+            <button class="lang-switch" onclick="toggleLanguage()" id="lang-btn">中文</button>
+        </div>
+    </nav>
+
+    <header id="home" class="hero">
+        <h1 id="hero-title">ARCHITECTING THE FUTURE</h1>
+        <p id="hero-subtitle" style="text-transform: none; letter-spacing: 0.05em; font-size: 1.3rem; max-width: 1000px; margin: 0 auto;">
+            Multimodal AIGC Specialist · Big Data Architect · SaaS & E-commerce Expert · AI Agent Orchestrator · Model Training Expert
+        </p>
+        <p id="hero-quote" style="font-size: 1.1rem; color: var(--primary); margin-top: 2rem; text-transform: none; font-style: italic;">
+            "Driving the next generation of intelligence through multimodal synergy and autonomous agent orchestration."
+        </p>
+    </header>
+
+    <main class="main-container" id="mainLayout"></main>
+
+    <button class="btn-add-timeline" onclick="addNewTimelineSection()" id="add-chapter-btn">
+        <i class="fas fa-atom"></i> INITIALIZE NEW CHAPTER
+    </button>
+
+    <section id="theory" class="contact-section" style="border-top: none; padding-top: 0;">
+        <div class="contact-container">
+            <h2 class="contact-title" id="theory-title">AI Theories & Perspectives</h2>
+            <div id="theory-articles" class="theory-grid">
+                <!-- Articles will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .theory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .theory-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 1.5rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+        .theory-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+        .theory-card h3 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        .theory-card p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            text-align: left;
+        }
+        .theory-tag {
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-top: 1.5rem;
+            display: block;
+        }
+    </style>
+
+    <section id="base" class="contact-section">
+        <div class="contact-container">
+            <h2 class="contact-title" id="base-title">The Base - Code & Creations</h2>
+            <p id="base-desc" style="color: var(--text-muted); font-size: 1.1rem;">My GitHub is the foundation of all my creations. Explore the code that powers these projects.</p>
+            <a href="https://github.com/zyc2478" target="_blank" class="freelance-badge" id="base-btn" style="text-decoration: none;">
+                <i class="fab fa-github"></i> Visit GitHub Profile
+            </a>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="contact-container">
+            <h2 class="contact-title" id="contact-title">Connect with Me</h2>
+            <div class="qr-placeholder" onclick="document.getElementById('qr-input').click()">
+                <i class="fas fa-qrcode" id="qr-icon"></i>
+                <img id="qr-img" style="display:none">
+                <input type="file" id="qr-input" accept="image/*" onchange="uploadQR(this)">
+            </div>
+            <p class="collaboration-text" id="contact-sub">Scan to connect on WeChat</p>
+            <p id="contact-desc" style="color: var(--text-muted); font-size: 1.1rem;">Open for high-impact collaborations and freelance opportunities in AI & Big Data.</p>
+            <div class="freelance-badge" id="contact-badge">Freelance & Consulting · Global Delivery</div>
+        </div>
+    </section>
+
+    <div id="saveIndicator" style="position:fixed; bottom:2rem; right:2rem; padding:1.2rem 3rem; background:var(--primary); color:#000; border-radius:1rem; font-weight:900; display:none; z-index:5000; box-shadow:0 0 30px var(--primary);">
+        DATA SYNCED
+    </div>
+
+    <script>
+        let currentLang = 'en';
+        let resumeData = null;
+
+        const i18n = {
+            en: {
+                heroTitle: "ARCHITECTING THE FUTURE",
+                heroSubtitle: "Multimodal AIGC Specialist · Big Data Architect · SaaS & E-commerce Expert · AI Agent Orchestrator · Model Training Expert",
+                heroQuote: '"Driving the next generation of intelligence through multimodal synergy and autonomous agent orchestration."',
+                navCore: "ARCHIVE", navTimeline: "TIMELINE", navTheory: "THEORY", navBase: "THE BASE", navContact: "CONNECT",
+                langBtn: "中文", addChapter: "INITIALIZE NEW CHAPTER", addWork: "ADD PROJECT RESULT",
+                contactTitle: "Connect with Me", contactSub: "Scan to connect on WeChat",
+                contactDesc: "Open for high-impact collaborations and freelance opportunities in AI & Big Data.",
+                contactBadge: "Freelance & Consulting · Global Delivery",
+                saveText: "DATA SYNCED",
+                resumeText: "RESUME",
+                theoryTitle: "AI Theories & Perspectives",
+                baseTitle: "The Base - Code & Creations",
+                baseDesc: "My GitHub is the foundation of all my creations. Explore the code that powers these projects.",
+                baseBtn: "<i class=\"fab fa-github\"></i> Visit GitHub Profile"
+            },
+            zh: {
+                heroTitle: "重塑智能边界",
+                heroSubtitle: "全模态 AIGC 专家 · 大数据架构师 · SaaS 与电商系统专家 · AI Agent 自动化专家 · 模型训练专家",
+                heroQuote: "“通过多模态协同与自主 Agent 编排，驱动下一代智能革命。”",
+                navCore: "核心", navTimeline: "时间轴", navTheory: "理论", navBase: "基地", navContact: "联系",
+                langBtn: "English", addChapter: "初始化新篇章", addWork: "添加项目成果",
+                contactTitle: "连接未来 · 与我合作", contactSub: "扫描二维码添加微信",
+                contactDesc: "期待在 AIGC 与大数据领域展开深度合作，欢迎兼职邀约。",
+                contactBadge: "专注兼职合作 · 全球交付",
+                saveText: "数据已同步",
+                resumeText: "简历",
+                theoryTitle: "AI 理论与经典观点",
+                baseTitle: "The Base - 代码基地与创作",
+                baseDesc: "我的 GitHub 是所有创作的基石。在这里，探索驱动这些项目的代码。",
+                baseBtn: "<i class=\"fab fa-github\"></i> 访问 GitHub"
+            }
+        };
+
+        // 异步加载履历数据
+        async function loadResume() {
+            try {
+                const response = await fetch('./resume/resume.json');
+                resumeData = await response.json();
+                renderAll();
+            } catch (error) {
+                console.error("Failed to load resume:", error);
+                // 如果加载失败，尝试从本地缓存恢复
+                const saved = localStorage.getItem('skyWalkerShowI18nData');
+                if (saved) {
+                    const data = JSON.parse(saved);
+                    currentLang = data.lang || 'en';
+                    resumeData = data.resumeData || null;
+                    renderAll();
+                }
+            }
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'zh' : 'en';
+            renderAll();
+            autoSave();
+        }
+
+        function renderAll() {
+            updateUI();
+            const container = document.getElementById('mainLayout');
+            container.innerHTML = '';
+            
+            if (resumeData && resumeData[currentLang]) {
+                resumeData[currentLang].sections.forEach(s => renderSection(s));
+                renderTheory(resumeData[currentLang].theory);
+            }
+        }
+
+        function updateUI() {
+            const t = i18n[currentLang];
+            document.getElementById('hero-title').innerText = t.heroTitle;
+            document.getElementById('hero-subtitle').innerText = t.heroSubtitle;
+            document.getElementById('hero-quote').innerText = t.heroQuote;
+            document.getElementById('nav-core').innerText = t.navCore;
+            document.getElementById('nav-timeline').innerText = t.navTimeline;
+            document.getElementById('nav-contact').innerText = t.navContact;
+            document.getElementById('lang-btn').innerText = t.langBtn;
+            document.getElementById('add-chapter-btn').innerHTML = `<i class="fas fa-atom"></i> ${t.addChapter}`;
+            document.getElementById('contact-title').innerText = t.contactTitle;
+            document.getElementById('contact-sub').innerText = t.contactSub;
+            document.getElementById('contact-desc').innerText = t.contactDesc;
+            document.getElementById('contact-badge').innerText = t.contactBadge;
+            document.getElementById('resume-text').innerText = t.resumeText;
+            document.getElementById('theory-title').innerText = t.theoryTitle;
+            document.getElementById('base-title').innerText = t.baseTitle;
+            document.getElementById('base-desc').innerText = t.baseDesc;
+            document.getElementById('base-btn').innerHTML = t.baseBtn;
+            document.getElementById('nav-theory').innerText = t.navTheory;
+            document.getElementById('nav-base').innerText = t.navBase;
+        }
+
+        function renderTheory(theoryData) {
+            const container = document.getElementById('theory-articles');
+            if (!theoryData) return;
+            container.innerHTML = theoryData.map(item => `
+                <div class="theory-card">
+                    <h3>${item.title}</h3>
+                    <p>${item.desc}</p>
+                    <span class="theory-tag">${item.tag}</span>
+                </div>
+            `).join('');
+        }
+
+        // 3D 粒子背景
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        function initCanvas() {
+            canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+            particles = [];
+            for(let i = 0; i < 120; i++) particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4, size: Math.random() * 2 });
+        }
+        function drawParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#00f2ff';
+            particles.forEach(p => {
+                p.x += p.vx; p.y += p.vy;
+                if(p.x < 0 || p.x > canvas.width) p.vx *= -1; if(p.y < 0 || p.y > canvas.height) p.vy *= -1;
+                ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill();
+            });
+            for(let i = 0; i < particles.length; i++) {
+                for(let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x, dy = particles[i].y - particles[j].y, dist = Math.sqrt(dx*dx + dy*dy);
+                    if(dist < 120) { ctx.strokeStyle = `rgba(0, 242, 255, ${1 - dist/120})`; ctx.lineWidth = 0.5; ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y); ctx.stroke(); }
+                }
+            }
+            requestAnimationFrame(drawParticles);
+        }
+        window.addEventListener('resize', initCanvas); initCanvas(); drawParticles();
+
+        // Spotlight effect
+        const spotlight = document.getElementById('spotlight');
+        window.addEventListener('mousemove', e => {
+            spotlight.style.setProperty('--x', e.clientX + 'px');
+            spotlight.style.setProperty('--y', e.clientY + 'px');
+        });
+
+        function renderSection(sectionData) {
+            const container = document.getElementById('mainLayout');
+            const rowId = 'row-' + Math.random().toString(36).substr(2, 7);
+            const worksGroupId = 'works-' + rowId;
+            const row = document.createElement('div');
+            row.className = 'row';
+            row.innerHTML = `
+                <div class="dot"></div>
+                <div class="col-left">
+                    <div class="exp-card">
+                        <span class="exp-date" contenteditable="true" oninput="autoSave()">${sectionData.exp.date}</span>
+                        <h2 class="exp-title" contenteditable="true" oninput="autoSave()">${sectionData.exp.title}</h2>
+                        <p class="exp-desc" contenteditable="true" oninput="autoSave()">${sectionData.exp.desc}</p>
+                    </div>
+                </div>
+                <div class="col-right">
+                    <div class="works-group" id="${worksGroupId}"></div>
+                    <button class="btn-add-timeline" style="margin-top:2rem; padding:1.2rem; font-size:1rem; border-style:dashed;" onclick="addNewWork('${worksGroupId}')">
+                        <i class="fas fa-plus"></i> <span class="btn-add-work-text">${i18n[currentLang].addWork}</span>
+                    </button>
+                </div>
+            `;
+            container.appendChild(row);
+            sectionData.works.forEach(w => appendWork(worksGroupId, w));
+        }
+
+        function appendWork(groupId, workData) {
+            const group = document.getElementById(groupId);
+            const workId = workData.id || ('w' + Date.now() + Math.random().toString(36).substr(2, 5));
+            const card = document.createElement('div');
+            card.className = 'work-card';
+            card.id = workId;
+            card.innerHTML = `
+                <label class="btn-upload"><i class="fas fa-camera"></i><input type="file" accept="image/*" onchange="uploadImage(this, '${workId}-img')"></label>
+                <div class="work-image">
+                    <div class="placeholder" style="${workData.image ? 'display:none' : ''}"><i class="fas ${workData.icon || 'fa-bolt'}"></i></div>
+                    <img id="${workId}-img" src="${workData.image || ''}" style="${workData.image ? 'display:block' : 'display:none'}">
+                </div>
+                <div class="work-content">
+                    <span class="work-tag" contenteditable="true" oninput="autoSave()">${workData.tag}</span>
+                    <h3 class="work-title" contenteditable="true" oninput="autoSave()">${workData.title}</h3>
+                    <p class="work-desc" contenteditable="true" oninput="autoSave()">${workData.desc}</p>
+                </div>
+            `;
+            group.appendChild(card);
+        }
+
+        function uploadImage(input, imgId) {
+            const file = input.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.getElementById(imgId); img.src = e.target.result; img.style.display = 'block';
+                    img.parentElement.querySelector('.placeholder').style.display = 'none'; autoSave();
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function uploadQR(input) {
+            const file = input.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.getElementById('qr-img'); img.src = e.target.result; img.style.display = 'block';
+                    document.getElementById('qr-icon').style.display = 'none'; autoSave();
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function addNewTimelineSection() {
+            if (!resumeData[currentLang]) resumeData[currentLang] = { sections: [] };
+            const newSec = { exp: { date: "DATE", title: "NEW CHAPTER", desc: "Description..." }, works: [] };
+            resumeData[currentLang].sections.push(newSec);
+            renderSection(newSec);
+            autoSave();
+        }
+
+        function addNewWork(groupId) {
+            appendWork(groupId, { tag: 'CATEGORY', title: 'PROJECT TITLE', desc: 'Description...', icon: 'fa-rocket' });
+            autoSave();
+        }
+
+        let saveTimer;
+        function autoSave() {
+            clearTimeout(saveTimer);
+            saveTimer = setTimeout(() => {
+                const indicator = document.getElementById('saveIndicator');
+                indicator.innerText = i18n[currentLang].saveText;
+                indicator.style.display = 'block';
+                
+                // 构造当前页面的数据快照
+                const currentData = { lang: currentLang, sections: [], qr: document.getElementById('qr-img').src };
+                document.querySelectorAll('.row').forEach(row => {
+                    const section = { exp: { date: row.querySelector('.exp-date').innerText, title: row.querySelector('.exp-title').innerText, desc: row.querySelector('.exp-desc').innerText }, works: [] };
+                    row.querySelectorAll('.work-card').forEach(card => {
+                        const img = card.querySelector('img');
+                        section.works.push({ id: card.id, tag: card.querySelector('.work-tag').innerText, title: card.querySelector('.work-title').innerText, desc: card.querySelector('.work-desc').innerText, image: img.src.startsWith('data:') ? img.src : null, icon: card.querySelector('.placeholder i').classList[1] });
+                    });
+                    currentData.sections.push(section);
+                });
+
+                // 更新全局 resumeData
+                resumeData[currentLang] = { sections: currentData.sections };
+                
+                localStorage.setItem('skyWalkerShowI18nData', JSON.stringify({ lang: currentLang, resumeData, qr: currentData.qr }));
+                setTimeout(() => indicator.style.display = 'none', 1500);
+            }, 1000);
+        }
+
+        window.onload = loadResume;
+    </script>
+</body>
+</html>

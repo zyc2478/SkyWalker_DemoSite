@@ -1,0 +1,364 @@
+{
+    "en": {
+        "sections": [
+            {
+                "exp": {
+                    "date": "2023 - Present",
+                    "title": "AIGC & Autonomous Agent Pioneer",
+                    "desc": "Orchestrating the next frontier of intelligence through the Flixor.ai ecosystem. Architecting multimodal autonomous agents that redefine creative workflows, from complex strategic briefs to high-end cinematic production with extreme precision."
+                },
+                "works": [
+                    {
+                        "id": "w1_1",
+                        "tag": "Neural Creative",
+                        "title": "BriefAgent & Flixor Studio",
+                        "desc": "A revolutionary end-to-end creative engine. Automates the entire production lifecycle—storyboarding, scene synthesis, and multi-dimensional asset generation—with AI-driven consistency.",
+                        "icon": "fa-wand-magic-sparkles",
+                        "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80"
+                    },
+                    {
+                        "id": "w1_2",
+                        "tag": "Efficiency Orchestration",
+                        "title": "AI-Remark & Multi-Track Agent",
+                        "desc": "Extreme efficiency in post-production. Intelligent clip analysis and automated BGM orchestration agents reducing turnaround time by 90% while maintaining cinematic standards.",
+                        "icon": "fa-bolt",
+                        "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80"
+                    },
+                    {
+                        "id": "w1_3",
+                        "tag": "Strategic Distribution",
+                        "title": "Social Matrix Automation",
+                        "desc": "Proprietary agents for automated high-end content creation and cross-platform distribution (Xiaohongshu/Weibo), delivering hyper-targeted brand engagement.",
+                        "icon": "fa-share-nodes",
+                        "image": "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=800&q=80"
+                    }
+                ]
+            },
+            {
+                "exp": {
+                    "date": "2021 - 2023",
+                    "title": "Big Data & AI Architect",
+                    "desc": "Spearheaded 'Wenhai', a premier national-grade OSINT intelligence platform. Engineered complex data fabrics to analyze multi-billion scale datasets across global social ecosystems with millisecond latency."
+                },
+                "works": [
+                    {
+                        "id": "w2_1",
+                        "tag": "OSINT Intelligence",
+                        "title": "Wenhai Strategic Decision Platform",
+                        "desc": "The benchmark for public opinion monitoring in China. Empowering government entities with real-time trend detection and risk mitigation through deep data mining.",
+                        "icon": "fa-globe",
+                        "image": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80"
+                    },
+                    {
+                        "id": "w2_2",
+                        "tag": "Domain LLM",
+                        "title": "Vertical Opinion LLM Fine-tuning",
+                        "desc": "Advanced fine-tuning of domain-specific LLMs for extreme accuracy in sentiment analysis and cross-modal content interpretation in complex social contexts.",
+                        "icon": "fa-brain",
+                        "image": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80"
+                    }
+                ]
+            },
+            {
+                "exp": {
+                    "date": "2019 - 2020",
+                    "title": "Smart Healthcare SaaS Architect",
+                    "desc": "Revolutionized digital health at Haoyisheng. Built intelligent medical-patient analysis ecosystems and remote diagnostic SaaS platforms that scaled expert medical resources globally."
+                },
+                "works": [
+                    {
+                        "id": "w3_1",
+                        "tag": "Medical SaaS",
+                        "title": "Intelligent Remote Diagnosis",
+                        "desc": "A high-availability tele-medicine infrastructure enabling real-time expert consultations and automated patient-doctor matching algorithms.",
+                        "icon": "fa-user-md",
+                        "image": "https://images.unsplash.com/photo-1576091160550-2173dad99901?auto=format&fit=crop&w=800&q=80"
+                    },
+                    {
+                        "id": "w3_2",
+                        "tag": "AI Diagnostics",
+                        "title": "Doctor Competency AI Assessment",
+                        "desc": "Automated evaluation engine for medical professionals, utilizing deep learning to assess diagnostic accuracy and service quality at scale.",
+                        "icon": "fa-stethoscope",
+                        "image": "https://images.unsplash.com/photo-1581056771107-24ca5f033842?auto=format&fit=crop&w=800&q=80"
+                    }
+                ]
+            },
+            {
+                "exp": {
+                    "date": "2012 - 2018",
+                    "title": "Ad-Tech & Global Data Architect",
+                    "desc": "Architected the commercial engine of Funshion. Built a multi-billion GMV programmatic advertising ecosystem and a unified global data platform powered by real-time AI recommendations."
+                },
+                "works": [
+                    {
+                        "id": "w5_1",
+                        "tag": "Programmatic Buying",
+                        "title": "Intelligent Ad Distribution (DSP/RTB)",
+                        "desc": "Seamlessly integrated 60+ global DSP/RTB platforms. Engineered high-concurrency bidding engines that processed millions of requests per second.",
+                        "icon": "fa-money-bill-trend-up",
+                        "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
+                    },
+                    {
+                        "id": "w5_2",
+                        "tag": "Data Platform",
+                        "title": "Enterprise Data Fabric & DMP",
+                        "desc": "Comprehensive Data Management Platform (DMP) providing deep behavioral insights and conversion optimization for massive user bases.",
+                        "icon": "fa-layer-group",
+                        "image": "https://images.unsplash.com/photo-1551288049-bbbda536339a?auto=format&fit=crop&w=800&q=80"
+                    }
+                ]
+            },
+            {
+                "exp": {
+                    "date": "2011 - 2012",
+                    "title": "Co-Founder & Digital Infrastructure Pioneer",
+                    "desc": "Disrupted the travel media landscape by connecting digital screens in 60%+ of China's airports. Secured 30M+ CNY in Series A funding and modernized airport information systems."
+                },
+                "works": [
+                    {
+                        "id": "w6_1",
+                        "tag": "Digital OOH",
+                        "title": "National Airport Media Network",
+                        "desc": "Unified digital display infrastructure across major aviation hubs, creating China's largest premium airport advertising network.",
+                        "icon": "fa-plane-departure",
+                        "image": "https://images.unsplash.com/photo-1436491865332-7a61a109c0f2?auto=format&fit=crop&w=800&q=80"
+                    }
+                ]
+            },
+            {
+                "exp": {
+                    "date": "2002 - 2009",
+                    "title": "Enterprise BI & Data Architect",
+                    "desc": "Pioneered large-scale BI solutions at Beijing Shengtang. Specialized in the architectural fusion of top-tier BI platforms (Actuate, Cognos, BO) with mission-critical financial ERP systems."
+                },
+                "works": [
+                    {
+                        "id": "w7_1",
+                        "tag": "Financial BI",
+                        "title": "Strategic ERP BI Integration",
+                        "desc": "Full-stack implementation of enterprise BI platforms for tier-1 financial institutions, transforming raw ERP data into strategic business intelligence.",
+                        "icon": "fa-file-invoice-dollar",
+                        "image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80"
+                    },
+                    {
+                        "id": "w7_2",
+                        "tag": "Big Data Fusion",
+                        "title": "Decision Support & Data Valorization",
+                        "desc": "Fusing BI analytics with early Big Data methodologies to drive business growth and precise strategic decision-making in the banking sector.",
+                        "icon": "fa-chart-line",
+                        "image": "https://images.unsplash.com/photo-1551288049-bbbda536339a?auto=format&fit=crop&w=800&q=80"
+                    }
+                ]
+            }
+        ],
+        "theory": [
+            {
+                "title": "The Quantum Leap in AI Video: From Sora to 'Sentient' Pixels",
+                "desc": "Sora represents a pivotal moment, transcending the uncanny valley to achieve a new level of physical-world coherence. This is not merely a technological leap but a philosophical one. The future of AI video lies not in 'text-to-video' but in 'intent-to-cinema,' where the AI, acting as a virtual director, comprehends and executes nuanced emotional and creative directives. We are on the cusp of an era where pixels will not just be rendered, but will feel 'sentient.'",
+                "tag": "SkyWalker Original"
+            },
+            {
+                "title": "AIGC Workflow Automation: Building an Exponential Efficiency Creative Factory",
+                "desc": "The true revolution of AIGC is not in individual tools but in the creation of a seamless, automated workflow. This article outlines a blueprint for a closed-loop system—from market insight and creative ideation to multimodal content production and omnichannel distribution. By orchestrating agents, we can build a creative factory that operates at exponential efficiency, freeing human talent to focus on high-level strategy and innovation.",
+                "tag": "SkyWalker Original"
+            },
+            {
+                "title": "The Trinity: A Vision for the Fusion of Big Data, AI, and Agents",
+                "desc": "This piece proposes a future 'Strategic Decision Operating System.' This OS will leverage Big Data for panoramic situational awareness, employ AI for deep predictive analysis and decision-making, and deploy autonomous Agent swarms for end-to-end task execution and feedback. This trinity forms a self-optimizing loop, capable of addressing complex business challenges with unprecedented speed and intelligence.",
+                "tag": "SkyWalker Original"
+            },
+            {
+                "title": "Open-Source Driven AIGC Architecture: n8n + Open Interpreter",
+                "desc": "A practical, implementable blueprint for a powerful automated AIGC pipeline. This article details how to use n8n as a central orchestration hub to manage and trigger tools like Open Interpreter. This architecture enables a fully automated production line, from data ingestion and processing to the final generation of sophisticated, multimodal content, all built on a flexible and scalable open-source stack.",
+                "tag": "SkyWalker Original"
+            },
+            {
+                "title": "The Art and Science of Model Fine-Tuning: Beyond Technique to Philosophy",
+                "desc": "Fine-tuning is more than a technique; it's an art form. This article explores the philosophical differences between mainstream fine-tuning schools of thought, such as LoRA and QLoRA. It shares core strategies for selecting and optimizing fine-tuning approaches in various business contexts, achieving the perfect equilibrium between model capability, cost, and performance. It's about sculpting the model's soul, not just adjusting its parameters.",
+                "tag": "SkyWalker Original"
+            }
+        ]
+    },
+    "zh": {
+        "sections": [
+            {
+                "exp": {
+                    "date": "2023 - 至今",
+                    "title": "AIGC 与自主 Agent 时代先行者",
+                    "desc": "主导 Flixor.ai 智能生态构建，致力于通过全模态自主 Agent 重塑创意生产力。实现从复杂战略 Brief 到极致电影感视频的端到端自动化交付。"
+                },
+                "works": [
+                    {
+                        "id": "w1_1",
+                        "tag": "神经创意引擎",
+                        "title": "BriefAgent 与 Flixor Studio",
+                        "desc": "革命性的端到端创意引擎。实现分镜自动拆解、场景智能合成及多维营销物料的 AI 化一致性产出。",
+                        "icon": "fa-wand-magic-sparkles",
+                        "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80"
+                    },
+                    {
+                        "id": "w1_2",
+                        "tag": "极致效能编排",
+                        "title": "AI-Remark 与多轨 Agent",
+                        "desc": "后期制作的效能革命。通过智能片段分析与 BGM 自动编排 Agent，在保持电影级标准的同时缩短 90% 的交付周期。",
+                        "icon": "fa-bolt",
+                        "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80"
+                    },
+                    {
+                        "id": "w1_3",
+                        "tag": "战略分发矩阵",
+                        "title": "社交矩阵全自动运营",
+                        "desc": "自研高阶内容生成与全平台（小红书/微博）自动分发 Agent，助力顶级品牌实现精准深度互动。",
+                        "icon": "fa-share-nodes",
+                        "image": "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=800&q=80"
+                    }
+                ]
+            },
+            {
+                "exp": {
+                    "date": "2021 - 2023",
+                    "title": "大数据与 AI 架构专家",
+                    "desc": "主导开发国家级舆情情报平台“文海”。构建复杂数据织网，实现对全球社交生态数十亿级海量数据的毫秒级深度解析与研判。"
+                },
+                "works": [
+                    {
+                        "id": "w2_1",
+                        "tag": "情报级监测",
+                        "title": "文海战略决策情报平台",
+                        "desc": "中国舆情监测领域的行业标杆。通过深度数据挖掘，为政府决策提供实时的热点预警与风险规避支撑。",
+                        "icon": "fa-globe",
+                        "image": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80"
+                    },
+                    {
+                        "id": "w2_2",
+                        "tag": "垂直领域大模型",
+                        "title": "舆情领域 LLM 深度微调",
+                        "desc": "针对复杂社交语境下的情感分析与跨模态内容理解，完成领域大模型的高精度微调与生产级部署。",
+                        "icon": "fa-brain",
+                        "image": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80"
+                    }
+                ]
+            },
+            {
+                "exp": {
+                    "date": "2019 - 2020",
+                    "title": "智慧医疗 SaaS 架构师 (好医生)",
+                    "desc": "在“好医生”重塑数字化医疗。构建智能医患分析生态与远程诊断 SaaS 平台，实现优质医疗资源的全球化云端调度。"
+                },
+                "works": [
+                    {
+                        "id": "w3_1",
+                        "tag": "医疗 SaaS",
+                        "title": "智能化远程专家诊疗平台",
+                        "desc": "高可用远程医疗基础设施，支持实时专家会诊与基于 AI 的医患精准匹配算法。",
+                        "icon": "fa-user-md",
+                        "image": "https://images.unsplash.com/photo-1576091160550-2173dad99901?auto=format&fit=crop&w=800&q=80"
+                    },
+                    {
+                        "id": "w3_2",
+                        "tag": "AI 诊断测评",
+                        "title": "医生专业能力 AI 测评引擎",
+                        "desc": "基于深度学习的医疗专业人才评估系统，实现对诊疗精度与服务质量的大规模自动化监控。",
+                        "icon": "fa-stethoscope",
+                        "image": "https://images.unsplash.com/photo-1581056771107-24ca5f033842?auto=format&fit=crop&w=800&q=80"
+                    }
+                ]
+            },
+            {
+                "exp": {
+                    "date": "2012 - 2018",
+                    "title": "广告技术与全球数据架构师 (风行网)",
+                    "desc": "主导风行网商业化引擎构建。打造了支撑数十亿 GMV 的程序化广告生态，以及基于实时 AI 推荐的统一全球化数据中台。"
+                },
+                "works": [
+                    {
+                        "id": "w5_1",
+                        "tag": "程序化投放",
+                        "title": "智能广告分发系统 (DSP/RTB)",
+                        "desc": "深度集成全球 60+ DSP/RTB 平台。自研高并发竞价引擎，支持每秒数百万次请求的实时精准触达。",
+                        "icon": "fa-money-bill-trend-up",
+                        "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
+                    },
+                    {
+                        "id": "w5_2",
+                        "tag": "数据中台",
+                        "title": "企业级数据织网与 DMP",
+                        "desc": "全栈数据管理平台 (DMP)，为海量用户提供深度的行为洞察、画像刻画及转化效率优化。",
+                        "icon": "fa-layer-group",
+                        "image": "https://images.unsplash.com/photo-1551288049-bbbda536339a?auto=format&fit=crop&w=800&q=80"
+                    }
+                ]
+            },
+            {
+                "exp": {
+                    "date": "2011 - 2012",
+                    "title": "联合创始人 & 数字基础设施先锋",
+                    "desc": "颠覆航旅媒体格局，成功连接全国 60% 以上机场数字屏幕。获得 3000万+ A 轮融资，实现航显系统与商业化的深度融合。"
+                },
+                "works": [
+                    {
+                        "id": "w6_1",
+                        "tag": "数字户外媒体",
+                        "title": "全国机场屏幕联播网",
+                        "desc": "统一管理全国各大航空枢纽的数字显示基础设施，构建了中国最大的机场高端媒体资源池。",
+                        "icon": "fa-plane-departure",
+                        "image": "https://images.unsplash.com/photo-1436491865332-7a61a109c0f2?auto=format&fit=crop&w=800&q=80"
+                    }
+                ]
+            },
+            {
+                "exp": {
+                    "date": "2002 - 2009",
+                    "title": "企业级 BI 与数据架构师 (北京盛唐)",
+                    "desc": "在北京盛唐主导了早期大规模 BI 解决方案。深耕 Actuate、Cognos、BO 等顶尖 BI 平台与核心金融 ERP 系统的架构融合与优化。"
+                },
+                "works": [
+                    {
+                        "id": "w7_1",
+                        "tag": "金融 BI",
+                        "title": "战略级 ERP BI 集成项目",
+                        "desc": "为一线金融机构实施全栈企业级 BI 平台，将原始 ERP 数据转化为驱动业务增长的战略情报。",
+                        "icon": "fa-file-invoice-dollar",
+                        "image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80"
+                    },
+                    {
+                        "id": "w7_2",
+                        "tag": "数据融合",
+                        "title": "决策支持与数据价值挖掘",
+                        "desc": "融合 BI 分析与早期大数据方法论，为银行机构实现精准的业务决策支持与精细化运营赋能。",
+                        "icon": "fa-chart-line",
+                        "image": "https://images.unsplash.com/photo-1551288049-bbbda536339a?auto=format&fit=crop&w=800&q=80"
+                    }
+                ]
+            }
+        ],
+        "theory": [
+            {
+                "title": "AI 视频的量子跃迁：从 Sora 到“有情”像素",
+                "desc": "Sora 的出现是一个关键时刻，它跨越了“恐怖谷”，达到了物理世界连贯性的新高度。这不仅是技术的飞跃，更是哲学的飞跃。AI 视频的未来不在于“文本到视频”，而在于“意图到电影”，AI 将扮演虚拟导演的角色，理解并执行微妙的情感和创意指令。我们正处在一个像素不仅被渲染，更能被“感知”的时代边缘。",
+                "tag": "天行原创"
+            },
+            {
+                "title": "AIGC 自动化工作流：构建指数级效率的创意工厂",
+                "desc": "AIGC 的真正革命不在于单个工具，而在于创建一个无缝、自动化的工作流。本文描绘了一个闭环系统的蓝图——从市场洞察、创意构思到多模态内容制作和全渠道分发。通过编排 Agent，我们可以构建一个以指数级效率运作的创意工厂，将人类的才能解放出来，专注于高层战略和创新。",
+                "tag": "天行原创"
+            },
+            {
+                "title": "三位一体：大数据、AI 与 Agent 的融合构想",
+                "desc": "本文提出了一个未来的“战略决策操作系统”构想。该系统将利用大数据实现全景态势感知，通过 AI 进行深度预测分析和决策，并部署自主 Agent 集群进行端到端的任务执行和反馈。这三者构成了一个自我优化的闭环，能够以前所未有的速度和智能应对复杂的商业挑战。",
+                "tag": "天行原创"
+            },
+            {
+                "title": "开源驱动的 AIGC 架构：n8n + Open Interpreter",
+                "desc": "一个强大、可落地的自动化 AIGC 流水线蓝图。本文详细介绍了如何使用 n8n 作为中心编排枢纽，来管理和触发像 Open Interpreter 这样的工具。该架构能够实现从数据提取、处理到最终生成复杂多模态内容的全自动化生产线，全部建立在灵活且可扩展的开源技术栈之上。",
+                "tag": "天行原创"
+            },
+            {
+                "title": "模型微调的艺术与科学：超越技术，走向哲学",
+                "desc": "微调不仅是一门技术，更是一门艺术。本文探讨了 LoRA 和 QLoRA 等主流微调流派之间的哲学差异。它分享了在不同业务场景中选择和优化微调策略的核心技巧，以实现模型能力、成本和性能的完美平衡。这关乎于塑造模型的“灵魂”，而不仅仅是调整其参数。",
+                "tag": "天行原创"
+            }
+        ]
+    }
+}
