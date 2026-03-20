@@ -16,6 +16,9 @@
             --text-muted: #a0a0c0;
             --border: rgba(0, 242, 255, 0.15);
             --font-main: 'Orbitron', 'PingFang SC', sans-serif;
+            --glow: 0 0 20px rgba(0, 242, 255, 0.18);
+            --nav-bg: rgba(5, 5, 5, 0.8);
+            --spotlight: rgba(0, 242, 255, 0.05);
         }
 
         [data-theme="cyberpunk"] {
@@ -27,6 +30,8 @@
             --border: rgba(255, 0, 255, 0.3);
             --font-main: 'Orbitron', 'PingFang SC', sans-serif;
             --glow: 0 0 15px rgba(255, 0, 255, 0.5);
+            --nav-bg: rgba(13, 2, 33, 0.72);
+            --spotlight: rgba(255, 0, 255, 0.06);
         }
 
         [data-theme="zen"] {
@@ -40,6 +45,8 @@
             --border: rgba(0, 0, 0, 0.08);
             --font-main: 'PingFang SC', 'Source Serif Pro', serif;
             --glow: none;
+            --nav-bg: rgba(255, 255, 255, 0.72);
+            --spotlight: rgba(44, 62, 80, 0.06);
         }
 
         [data-theme="deepsea"] {
@@ -51,6 +58,25 @@
             --border: rgba(0, 198, 255, 0.25);
             --font-main: 'Orbitron', 'PingFang SC', sans-serif;
             --glow: 0 0 20px rgba(0, 210, 255, 0.3);
+            --nav-bg: rgba(0, 4, 40, 0.72);
+            --spotlight: rgba(0, 210, 255, 0.06);
+        }
+
+        body[data-resume-style="minimal"] {
+            --card-bg: rgba(20, 20, 30, 0.55);
+            --border: rgba(255, 255, 255, 0.10);
+            --glow: none;
+        }
+
+        body[data-resume-style="paper"] {
+            --bg: #f6f7fb;
+            --card-bg: rgba(255, 255, 255, 0.98);
+            --text-light: #101418;
+            --text-muted: #4b5563;
+            --border: rgba(0, 0, 0, 0.08);
+            --nav-bg: rgba(255, 255, 255, 0.78);
+            --spotlight: rgba(16, 20, 24, 0.05);
+            --glow: none;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -86,9 +112,120 @@
             z-index: 1;
             background: radial-gradient(
                 600px circle at var(--x, 50%) var(--y, 50%),
-                rgba(0, 242, 255, 0.05),
+                var(--spotlight),
                 transparent 40%
             );
+        }
+
+        #theme-fx {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 1;
+        }
+        #theme-fx::before {
+            content: '';
+            position: absolute;
+            inset: -20%;
+            background:
+                radial-gradient(600px circle at 20% 30%, rgba(0, 242, 255, 0.10), transparent 55%),
+                radial-gradient(700px circle at 80% 70%, rgba(112, 0, 255, 0.10), transparent 55%),
+                radial-gradient(900px circle at 50% 40%, rgba(255, 0, 122, 0.06), transparent 60%);
+            filter: blur(12px);
+            animation: fx-drift 18s linear infinite;
+            opacity: 0.7;
+            mix-blend-mode: screen;
+        }
+        #theme-fx::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                repeating-linear-gradient(90deg, rgba(0, 242, 255, 0.05) 0px, rgba(0, 242, 255, 0.05) 1px, transparent 1px, transparent 120px),
+                radial-gradient(circle at 50% 50%, transparent 0%, rgba(0, 0, 0, 0.55) 70%, rgba(0, 0, 0, 0.85) 100%);
+            animation: fx-grid 12s linear infinite;
+            opacity: 0.45;
+        }
+
+        [data-theme="cyberpunk"] #theme-fx::before {
+            background:
+                radial-gradient(600px circle at 25% 35%, rgba(255, 0, 255, 0.18), transparent 55%),
+                radial-gradient(700px circle at 75% 65%, rgba(0, 255, 159, 0.16), transparent 55%),
+                linear-gradient(135deg, rgba(255, 238, 0, 0.08), rgba(255, 0, 255, 0.06));
+            filter: blur(10px) saturate(1.25);
+            animation: fx-drift 10s linear infinite;
+            opacity: 0.9;
+        }
+        [data-theme="cyberpunk"] #theme-fx::after {
+            background:
+                repeating-linear-gradient(0deg, rgba(255, 0, 255, 0.10) 0px, rgba(255, 0, 255, 0.10) 1px, transparent 1px, transparent 3px),
+                repeating-linear-gradient(90deg, rgba(0, 255, 159, 0.08) 0px, rgba(0, 255, 159, 0.08) 1px, transparent 1px, transparent 160px),
+                radial-gradient(circle at 50% 50%, transparent 0%, rgba(0, 0, 0, 0.6) 70%, rgba(0, 0, 0, 0.9) 100%);
+            animation: fx-scan 3.5s linear infinite;
+            opacity: 0.55;
+            mix-blend-mode: screen;
+        }
+
+        [data-theme="zen"] #theme-fx::before {
+            background:
+                radial-gradient(800px circle at 30% 35%, rgba(44, 62, 80, 0.06), transparent 60%),
+                radial-gradient(900px circle at 75% 70%, rgba(93, 109, 126, 0.06), transparent 65%),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.85), rgba(245, 245, 245, 0.85));
+            filter: blur(18px);
+            animation: fx-zen 22s ease-in-out infinite;
+            opacity: 0.95;
+            mix-blend-mode: normal;
+        }
+        [data-theme="zen"] #theme-fx::after {
+            background:
+                radial-gradient(circle at 50% 20%, rgba(44, 62, 80, 0.05), transparent 55%),
+                radial-gradient(circle at 60% 80%, rgba(93, 109, 126, 0.05), transparent 60%);
+            animation: fx-zen 26s ease-in-out infinite;
+            opacity: 0.8;
+            mix-blend-mode: multiply;
+        }
+
+        [data-theme="deepsea"] #theme-fx::before {
+            background:
+                radial-gradient(700px circle at 25% 30%, rgba(0, 210, 255, 0.14), transparent 60%),
+                radial-gradient(900px circle at 70% 70%, rgba(58, 123, 213, 0.12), transparent 60%),
+                radial-gradient(1100px circle at 50% 40%, rgba(0, 198, 255, 0.08), transparent 65%);
+            filter: blur(14px) saturate(1.15);
+            animation: fx-caustics 12s ease-in-out infinite;
+            opacity: 0.85;
+            mix-blend-mode: screen;
+        }
+        [data-theme="deepsea"] #theme-fx::after {
+            background:
+                repeating-linear-gradient(120deg, rgba(0, 210, 255, 0.05) 0px, rgba(0, 210, 255, 0.05) 1px, transparent 1px, transparent 140px),
+                radial-gradient(circle at 50% 50%, transparent 0%, rgba(0, 0, 0, 0.55) 72%, rgba(0, 0, 0, 0.9) 100%);
+            animation: fx-caustics 9s ease-in-out infinite;
+            opacity: 0.55;
+        }
+
+        @keyframes fx-drift {
+            0% { transform: translate3d(-2%, -1%, 0) scale(1.02); }
+            50% { transform: translate3d(2%, 1%, 0) scale(1.04); }
+            100% { transform: translate3d(-2%, -1%, 0) scale(1.02); }
+        }
+        @keyframes fx-grid {
+            0% { background-position: 0 0, 0 0; }
+            100% { background-position: 220px 0, 0 0; }
+        }
+        @keyframes fx-scan {
+            0% { background-position: 0 0, 0 0, 0 0; }
+            100% { background-position: 0 80px, 280px 0, 0 0; }
+        }
+        @keyframes fx-zen {
+            0% { transform: translate3d(0, 0, 0) scale(1.02); }
+            50% { transform: translate3d(1.5%, -1%, 0) scale(1.03); }
+            100% { transform: translate3d(0, 0, 0) scale(1.02); }
+        }
+        @keyframes fx-caustics {
+            0% { transform: translate3d(-1%, 0%, 0) scale(1.03); filter: blur(14px) saturate(1.1) hue-rotate(0deg); }
+            50% { transform: translate3d(1%, -1%, 0) scale(1.05); filter: blur(13px) saturate(1.15) hue-rotate(12deg); }
+            100% { transform: translate3d(-1%, 0%, 0) scale(1.03); filter: blur(14px) saturate(1.1) hue-rotate(0deg); }
         }
 
         nav {
@@ -100,7 +237,7 @@
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            background: rgba(5, 5, 5, 0.8);
+            background: var(--nav-bg);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
         }
@@ -145,7 +282,7 @@
             font-weight: 900;
             margin-bottom: 1.5rem;
             letter-spacing: -0.02em;
-            background: linear-gradient(to bottom, #fff 0%, #00f2ff 100%);
+            background: linear-gradient(to bottom, var(--text-light) 0%, var(--primary) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             filter: drop-shadow(0 0 30px rgba(0, 242, 255, 0.3));
@@ -239,7 +376,7 @@
 
         .exp-card:hover { transform: rotateY(-10deg) translateZ(20px); border-color: var(--primary); }
         .exp-date { font-size: 1.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem; display: block; outline: none; }
-        .exp-title { font-size: 2rem; font-weight: 900; margin-bottom: 1rem; color: #fff; outline: none; }
+        .exp-title { font-size: 2rem; font-weight: 900; margin-bottom: 1rem; color: var(--text-light); outline: none; }
         .exp-desc { font-size: 1.1rem; color: var(--text-muted); outline: none; text-align: justify; }
 
         .work-card {
@@ -262,17 +399,24 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--primary);
-            font-size: 4rem;
+            background:
+                radial-gradient(600px circle at 30% 30%, rgba(255, 255, 255, 0.06), transparent 55%),
+                repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.06) 0px, rgba(255, 255, 255, 0.06) 1px, transparent 1px, transparent 90px),
+                rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
         }
+        .placeholder::after { content: 'loading image'; opacity: 0.75; }
 
         .work-content { padding: 2.5rem; }
         .work-tag {
             font-size: 0.8rem; font-weight: 900; color: var(--primary); background: rgba(0, 242, 255, 0.1);
             padding: 0.4rem 1.2rem; border-radius: 999px; margin-bottom: 1.5rem; display: inline-block;
         }
-        .work-title { font-size: 1.6rem; font-weight: 900; margin-bottom: 0.8rem; color: #fff; outline: none; }
+        .work-title { font-size: 1.6rem; font-weight: 900; margin-bottom: 0.8rem; color: var(--text-light); outline: none; }
         .work-desc { color: var(--text-muted); font-size: 1rem; outline: none; line-height: 1.7; }
 
         .contact-section { padding: 8rem 2rem; text-align: center; border-top: 1px solid var(--border); }
@@ -285,16 +429,38 @@
             padding: 10px;
             border-radius: 1rem;
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .qr-code::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 3px;
+            top: 0;
+            background: linear-gradient(90deg, transparent, rgba(0, 242, 255, 0.9), transparent);
+            animation: qr-scan 2.2s ease-in-out infinite;
+            opacity: 0.9;
+            pointer-events: none;
         }
         .qr-code img {
             width: 100%;
             height: 100%;
             object-fit: contain;
         }
+        @keyframes qr-scan {
+            0% { transform: translateY(0); opacity: 0; }
+            15% { opacity: 0.95; }
+            50% { transform: translateY(195px); opacity: 0.95; }
+            85% { opacity: 0.2; }
+            100% { transform: translateY(0); opacity: 0; }
+        }
         .contact-info {
             margin-bottom: 2rem;
         }
-        #contact-name {
+        #contact-note {
             font-size: 1.8rem;
             font-weight: 800;
             color: var(--primary);
@@ -317,6 +483,121 @@
             position: absolute; top: 1.5rem; right: 1.5rem; width: 50px; height: 55px; background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 20;
         }
+        .btn-upload input { display: none; }
+
+        .admin-only { display: none !important; }
+        body.admin .admin-only { display: flex !important; }
+        body.admin label.admin-only { display: flex !important; }
+        body.admin button.admin-only { display: flex !important; }
+
+        .drawer-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(6px);
+            z-index: 8000;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.25s ease;
+        }
+        .drawer-overlay.open { display: block; opacity: 1; }
+        .drawer {
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: min(560px, 92vw);
+            background: var(--card-bg);
+            border-left: 1px solid var(--border);
+            z-index: 9000;
+            transform: translateX(105%);
+            transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: -20px 0 60px rgba(0, 0, 0, 0.45);
+        }
+        .drawer.open { transform: translateX(0); }
+        .drawer-header {
+            padding: 1.8rem 2rem 1.2rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+        .drawer-title {
+            font-size: 1.5rem;
+            font-weight: 900;
+            line-height: 1.15;
+            color: var(--text-light);
+        }
+        .drawer-close {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-light);
+            border-radius: 999px;
+            width: 42px;
+            height: 42px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.25s;
+            flex-shrink: 0;
+        }
+        .drawer-close:hover { border-color: var(--primary); color: var(--primary); transform: rotate(90deg); }
+        .drawer-body {
+            padding: 2rem;
+            overflow: auto;
+        }
+        .drawer-hero-img {
+            width: 100%;
+            height: 180px;
+            border-radius: 1.2rem;
+            object-fit: cover;
+            border: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
+        .drawer-sub {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        .drawer-section {
+            margin-top: 1.6rem;
+            padding-top: 1.3rem;
+            border-top: 1px solid var(--border);
+        }
+        .drawer-section h4 {
+            font-size: 1rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 0.9rem;
+            letter-spacing: 0.02em;
+        }
+        .drawer-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+        .drawer-list li {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.55;
+            position: relative;
+            padding-left: 1.1rem;
+        }
+        .drawer-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
 
         @media (max-width: 1024px) {
             .main-container::before { left: 40px; }
@@ -329,15 +610,16 @@
 </head>
 <body>
         <div id="spotlight"></div>
+        <div id="theme-fx"></div>
     <canvas id="bg-canvas"></canvas>
     <nav>
         <div class="logo">SkyWalker · AI Pioneer</div>
         <div style="display: flex; gap: 2rem; align-items: center;">
             <div style="display: flex; gap: 2rem; font-weight: 800; font-size: 0.8rem;">
                 <a href="#mainLayout" id="nav-timeline" style="color: var(--primary); text-decoration: none;">TIMELINE</a>
-                <a href="#theory" id="nav-theory" style="color: #fff; text-decoration: none;">THEORY</a>
-                <a href="#base" id="nav-base" style="color: #fff; text-decoration: none;">THE BASE</a>
-                <a href="#contact" id="nav-contact" style="color: #fff; text-decoration: none;">CONNECT</a>
+                <a href="#theory" id="nav-theory" style="color: var(--text-light); text-decoration: none;">THEORY</a>
+                <a href="#base" id="nav-base" style="color: var(--text-light); text-decoration: none;">THE BASE</a>
+                <a href="#contact" id="nav-contact" style="color: var(--text-light); text-decoration: none;">CONNECT</a>
             </div>
             <select class="lang-switch" onchange="changeTheme(this.value)" id="theme-switch" style="background: transparent; border: 1px solid var(--primary); color: var(--primary); outline: none;">
                 <option value="default">Default</option>
@@ -345,6 +627,8 @@
                 <option value="zen">Zen</option>
                 <option value="deepsea">Deep Sea</option>
             </select>
+            <button class="lang-switch admin-only" onclick="reloadFromResumeJson()" id="resume-sync-btn">从简历中读取</button>
+            <button class="lang-switch" onclick="openAdminLogin()" id="admin-btn">ADMIN</button>
             <button class="lang-switch" onclick="toggleLanguage()" id="lang-btn">中文</button>
         </div>
     </nav>
@@ -361,7 +645,7 @@
 
     <main class="main-container" id="mainLayout"></main>
 
-    <button class="btn-add-timeline" onclick="addNewTimelineSection()" id="add-chapter-btn">
+    <button class="btn-add-timeline admin-only" onclick="addNewTimelineSection()" id="add-chapter-btn">
         <i class="fas fa-atom"></i> INITIALIZE NEW CHAPTER
     </button>
 
@@ -440,9 +724,7 @@
         <div class="contact-container">
             <h2 class="contact-title" id="base-title">The Base - Code & Creations</h2>
             <p id="base-desc" style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 3rem;">My GitHub is the foundation of all my creations. Explore the code that powers these projects.</p>
-            <div id="github-repos" class="theory-grid" style="margin-bottom: 3rem;">
-                <!-- Repos will be dynamically inserted here -->
-            </div>
+            <div id="base-projects" class="theory-grid" style="margin-bottom: 3rem;"></div>
             <a href="https://github.com/zyc2478" target="_blank" class="freelance-badge" id="base-btn" style="text-decoration: none;">
                 <i class="fab fa-github"></i> Visit GitHub Profile
             </a>
@@ -452,25 +734,411 @@
     <section id="contact" class="contact-section">
         <div class="contact-container">
             <h2 class="contact-title" id="contact-title">Connect with Me</h2>
-            <div class="qr-code">
-                <img src="https://i.ibb.co/XF33B6q/wechat-qr.jpg" alt="WeChat QR Code">
+            <div class="qr-code" onclick="document.getElementById('qr-input').click()">
+                <img id="qr-img" src="" alt="WeChat QR Code" style="display:none">
+                <input type="file" id="qr-input" accept="image/*" onchange="uploadQR(this)">
             </div>
+            <p class="collaboration-text" id="contact-sub">Scan to connect on WeChat</p>
             <div class="contact-info">
-                <p id="contact-name">凤天行 / SkyWalker</p>
-                <p id="contact-email">Email: zyc2478@gmail.com</p>
+                <p id="contact-note">备注：XX项目合作</p>
+                <p id="contact-email">Email: zyc2478@126.com</p>
             </div>
             <p id="contact-desc" style="color: var(--text-muted); font-size: 1.1rem;">Open for high-impact collaborations and freelance opportunities in AI & Big Data.</p>
             <div class="freelance-badge" id="contact-badge">Freelance & Consulting · Global Delivery</div>
         </div>
     </section>
 
+    <div class="drawer-overlay" id="drawer-overlay" onclick="closeDrawer()"></div>
+    <aside class="drawer" id="drawer" aria-hidden="true">
+        <div class="drawer-header">
+            <div>
+                <div class="work-tag" id="drawer-tag" style="display:inline-block; margin-bottom:0.8rem;"></div>
+                <div class="drawer-title" id="drawer-title"></div>
+            </div>
+            <button class="drawer-close" onclick="closeDrawer()" aria-label="Close">
+                <i class="fas fa-xmark"></i>
+            </button>
+        </div>
+        <div class="drawer-body" id="drawer-body"></div>
+    </aside>
+
     <div id="saveIndicator" style="position:fixed; bottom:2rem; right:2rem; padding:1.2rem 3rem; background:var(--primary); color:#000; border-radius:1rem; font-weight:900; display:none; z-index:5000; box-shadow:0 0 30px var(--primary);">
         DATA SYNCED
     </div>
 
+    <div class="drawer-overlay" id="admin-overlay" onclick="closeAdminLogin()" style="z-index: 9500;"></div>
+    <aside class="drawer" id="admin-drawer" style="z-index: 9600; width: min(460px, 92vw);" aria-hidden="true">
+        <div class="drawer-header">
+            <div class="drawer-title" id="admin-title">Admin Login</div>
+            <button class="drawer-close" onclick="closeAdminLogin()" aria-label="Close">
+                <i class="fas fa-xmark"></i>
+            </button>
+        </div>
+        <div class="drawer-body">
+            <div class="drawer-sub" id="admin-sub">管理员登录后可编辑 Timeline、上传图片、以及使用“从简历中读取”。</div>
+            <div style="display:flex; flex-direction:column; gap:1rem;">
+                <input id="admin-user" placeholder="Username" style="padding:0.9rem 1rem; border-radius: 1rem; border: 1px solid var(--border); background: rgba(255,255,255,0.06); color: var(--text-light); outline:none;">
+                <input id="admin-pass" placeholder="Password" type="password" style="padding:0.9rem 1rem; border-radius: 1rem; border: 1px solid var(--border); background: rgba(255,255,255,0.06); color: var(--text-light); outline:none;">
+                <button class="lang-switch" onclick="adminLogin()" style="width:100%;">LOGIN</button>
+                <button class="lang-switch" onclick="adminLogout()" style="width:100%; border-color: var(--border); color: var(--text-light);">LOGOUT</button>
+            </div>
+            <div class="drawer-section">
+                <h4>Resume Tools</h4>
+                <div class="drawer-sub" style="margin-bottom: 1rem;">上传/导出功能仅管理员可用。导出使用浏览器打印为 PDF。</div>
+                <div style="display:flex; flex-direction:column; gap:0.9rem;">
+                    <label class="lang-switch" style="width:100%; text-align:center;">
+                        Upload resume.json
+                        <input type="file" accept="application/json" onchange="uploadResumeJson(this)" style="display:none;">
+                    </label>
+                    <button class="lang-switch" onclick="exportPDF()" style="width:100%;">EXPORT PDF</button>
+                    <select class="lang-switch" id="resume-style" onchange="setResumeStyle(this.value)" style="background: transparent; border: 1px solid var(--primary); color: var(--primary); outline: none;">
+                        <option value="pro">Pro</option>
+                        <option value="minimal">Minimal</option>
+                        <option value="paper">Paper</option>
+                    </select>
+                    <button class="lang-switch" onclick="reloadFromResumeJson()" style="width:100%; border-color: var(--border); color: var(--text-light);">从简历中读取</button>
+                    <button class="lang-switch" onclick="clearAdminEdits()" style="width:100%; border-color: #ff4b2b; color: #ff4b2b;">清除本地编辑缓存</button>
+                </div>
+            </div>
+        </div>
+    </aside>
+
     <script>
         let currentLang = 'en';
         let resumeData = null;
+        let workIndex = new Map();
+        let particleConfig = { count: 120, speed: 0.4, linkDistance: 120, lineWidth: 0.5, driftY: 0 };
+        let isAdmin = localStorage.getItem('skyWalkerIsAdmin') === '1';
+
+        const BASE_PROJECTS = {
+            en: [
+                {
+                    name: 'BriefAgent',
+                    subtitle: 'AI marketing creativity production platform',
+                    highlights: [
+                        'End-to-end pipeline: brand brief → story → plot → storyboard → image/video generation',
+                        'Async task queue + persistent MySQL storage + JWT auth/permissions',
+                        'Integrations: Volcengine ARK / Jimeng, multi-provider media generation',
+                        'Designed for team workflows: project/story/shot hierarchy and history tracking'
+                    ],
+                    link: 'https://github.com/zyc2478/BriefAgent'
+                },
+                {
+                    name: 'FlixorStudioAgent',
+                    subtitle: 'Creation studio for image/CLIP/video with style controls',
+                    highlights: [
+                        'Text-to-image studio: multiple styles, samplers, negative prompts, batch generation',
+                        'CLIP generation studio: camera motion control, duration/resolution controls',
+                        'Stories management dashboard for assets and production tracking',
+                        'Frontend: Next.js (App Router) + Chakra UI + Tailwind + TypeScript'
+                    ],
+                    link: 'https://github.com/zyc2478/FlixorStudioAgent'
+                },
+                {
+                    name: 'AutoVideoAgent',
+                    subtitle: 'Workflow-configurable automated video agent',
+                    highlights: [
+                        'Automation: storyboard → image → clip → final composition',
+                        'Built-in workflow configuration UI and usage observability',
+                        'Backend: FastAPI + WebSocket, supports SQLite/MySQL',
+                        'Production-oriented: concurrency control, migration (Alembic), tests'
+                    ],
+                    link: 'https://github.com/zyc2478/AutoVideoAgent'
+                },
+                {
+                    name: 'FlixorAICut',
+                    subtitle: 'AI-assisted multi-track cutting and packaging toolchain',
+                    highlights: [
+                        'Scene detection + clip retrieval + BGM matching + multi-track assembly',
+                        'Video engineering stack: ffmpeg/moviepy/opencv/scenedetect/librosa',
+                        'Supports captioning, TTS, quality enhancement, and packaging workflows',
+                        'Designed for throughput: batch execution and reproducible pipelines'
+                    ],
+                    link: 'https://github.com/zyc2478/FlixorAICut'
+                },
+                {
+                    name: 'FormatConverter',
+                    subtitle: 'One-click format conversion utilities',
+                    highlights: [
+                        'Lightweight conversion workflows for day-to-day engineering productivity',
+                        'CLI-style building blocks that can be composed into automation pipelines',
+                        'Focus on correctness and stable outputs'
+                    ],
+                    link: 'https://github.com/zyc2478/FormatConverter'
+                },
+                {
+                    name: 'pitch_doctor',
+                    subtitle: 'Pitch analysis and decision-support system',
+                    highlights: [
+                        'Multi-layer architecture: API + web + admin + rule/score engine',
+                        'Designed for enterprise workflows: evaluation, review nodes, auditability',
+                        'Practical integration patterns for LLM-driven analysis'
+                    ],
+                    link: 'https://github.com/zyc2478/pitch_doctor'
+                },
+                {
+                    name: 'SkyWalkerFactory',
+                    subtitle: 'Multi-agent automation and orchestration foundation',
+                    highlights: [
+                        'FastAPI-based agent factory entrypoint and service orchestration',
+                        'Integrates automation agents, workflows, and local tooling',
+                        'Acts as the “brains” behind the demo ecosystem'
+                    ],
+                    link: 'https://github.com/zyc2478/SkyWalkerFactory'
+                }
+            ],
+            zh: [
+                {
+                    name: 'BriefAgent',
+                    subtitle: 'AI 营销创意生产平台',
+                    highlights: [
+                        '端到端链路：品牌 Brief → 故事 → 剧情 → 分镜 → 生图/生视频',
+                        '异步任务队列 + MySQL 持久化 + JWT 鉴权/权限体系',
+                        '集成火山 ARK / 即梦等多供应商媒体生成能力',
+                        '面向团队协作：项目/故事/镜头层级管理与历史追踪'
+                    ],
+                    link: 'https://github.com/zyc2478/BriefAgent'
+                },
+                {
+                    name: 'FlixorStudioAgent',
+                    subtitle: '高质量图像/CLIP/视频的创作工作室',
+                    highlights: [
+                        '文生图工作室：多风格、多采样器、负向提示词、批量与历史',
+                        'CLIP 工作室：动作描述、镜头运动、时长/分辨率控制',
+                        'Stories 管理与数据仪表盘：资源统计、筛选、预览',
+                        '前端：Next.js(App Router) + Chakra UI + Tailwind + TypeScript'
+                    ],
+                    link: 'https://github.com/zyc2478/FlixorStudioAgent'
+                },
+                {
+                    name: 'AutoVideoAgent',
+                    subtitle: '可配置工作流的自动化视频 Agent',
+                    highlights: [
+                        '自动化：分镜 → 生图 → 生 Clip → 合成成片',
+                        '内置工作流配置与用量统计/并发观测能力',
+                        '后端 FastAPI + WebSocket，SQLite/MySQL 双栈支持',
+                        '面向生产发布：并发控制、迁移(Alembic)、测试体系'
+                    ],
+                    link: 'https://github.com/zyc2478/AutoVideoAgent'
+                },
+                {
+                    name: 'FlixorAICut',
+                    subtitle: 'AI 多轨剪辑与包装工具链',
+                    highlights: [
+                        '镜头检测 + 素材检索 + BGM 匹配 + 多轨组装',
+                        '工程栈：ffmpeg/moviepy/opencv/scenedetect/librosa',
+                        '支持字幕、TTS、画质增强与包装生产流程',
+                        '强调吞吐与可复现：批处理与稳定的流水线结构'
+                    ],
+                    link: 'https://github.com/zyc2478/FlixorAICut'
+                },
+                {
+                    name: 'FormatConverter',
+                    subtitle: '一键格式转换工具集',
+                    highlights: [
+                        '面向日常工程效率：轻量、稳定、可组合',
+                        '可作为自动化流水线中的基础能力模块',
+                        '强调输出一致性与正确性'
+                    ],
+                    link: 'https://github.com/zyc2478/FormatConverter'
+                },
+                {
+                    name: 'Pitch_Doctor',
+                    subtitle: 'Pitch 解析与决策支持系统',
+                    highlights: [
+                        '多层架构：API + Web + Admin + 规则/评分引擎',
+                        '面向企业场景：评估、复核节点与审计可追溯',
+                        'LLM 驱动分析的可落地集成模式'
+                    ],
+                    link: 'https://github.com/zyc2478/pitch_doctor'
+                },
+                {
+                    name: 'SkyWalkerFactory',
+                    subtitle: '多 Agent 自动化编排底座',
+                    highlights: [
+                        '基于 FastAPI 的 Agent Factory 入口与服务编排',
+                        '集成自动化 Agent、工作流与本地工具链',
+                        '作为演示生态的“智能中枢”'
+                    ],
+                    link: 'https://github.com/zyc2478/SkyWalkerFactory'
+                }
+            ]
+        };
+
+        const WORK_DETAILS = {
+            en: {
+                w1_1: {
+                    summary: 'A brand-first creative system that turns strategic briefs into scalable, style-governed multimodal assets.',
+                    capabilities: ['Brand strategy decomposition', 'Storyboard planning', 'Style governance (prompt + dataset discipline)', 'Agent orchestration', 'Multimodal asset pipeline'],
+                    highlights: ['Single brief produces multiple narrative routes and visual systems', 'Consistent brand tone across text/image/video', 'Versioned creative SOP for repeatability'],
+                    scenarios: ['Brand campaign launch', 'Always-on social content production', 'Product storytelling at scale'],
+                    tech: ['Agent-based workflow graph', 'Quality gates + human-in-the-loop review', 'Reusable brand latent space concepts']
+                },
+                w1_2: {
+                    summary: 'An automated post-production agent that compresses editing cycles while maintaining cinematic consistency.',
+                    capabilities: ['Clip understanding', 'Beat/BGM alignment', 'Multi-track timeline assembly', 'Rule-based trimming', 'Batch throughput tooling'],
+                    highlights: ['90%+ turnaround reduction with repeatable edit SOP', 'Automated music selection + rhythm matching', 'Multi-track composition with consistent pacing'],
+                    scenarios: ['Short-form ad variants', 'Social video batching', 'Internal media production pipelines'],
+                    tech: ['Heuristic + model-assisted clip scoring', 'Deterministic assembly rules for stability', 'Async processing with observable states']
+                },
+                w1_3: {
+                    summary: 'An automation matrix for creation-to-distribution across major social platforms with governance and tracking.',
+                    capabilities: ['Content scheduling', 'Cross-platform formatting', 'Template-driven creatives', 'Publishing automation', 'Feedback loop analytics'],
+                    highlights: ['One-to-many distribution with platform-native constraints', 'Content governance and brand safety checks', 'Operational dashboard for throughput'],
+                    scenarios: ['Multi-platform brand operations', 'Campaign amplification', 'KOL-style content scaling'],
+                    tech: ['Orchestrated tasks + retries', 'Idempotent publish pipelines', 'Data-driven optimization loop']
+                },
+                w2_1: {
+                    summary: 'A national-grade OSINT platform for multi-billion scale public opinion monitoring and risk analysis.',
+                    capabilities: ['Data ingestion at scale', 'Real-time indexing', 'Trend detection', 'Risk signal engineering', 'Dashboarding and alerting'],
+                    highlights: ['Millisecond-level query and correlation', 'Multi-source global social ecosystem coverage', 'Operational intelligence for decision makers'],
+                    scenarios: ['Public risk monitoring', 'Brand reputation defense', 'Crisis response command center'],
+                    tech: ['Data fabric architecture', 'Stream + batch fusion', 'Feature engineering for weak-signal detection']
+                },
+                w2_2: {
+                    summary: 'Domain fine-tuning and evaluation pipeline for sentiment and stance analysis in complex social contexts.',
+                    capabilities: ['Dataset curation', 'Labeling guidelines', 'Fine-tuning (LoRA/QLoRA)', 'Evaluation harness', 'Deployment packaging'],
+                    highlights: ['High precision under domain-specific jargon and sarcasm', 'Aligned outputs with audit standards', 'Continuous learning loop with feedback'],
+                    scenarios: ['Opinion classification', 'Cross-modal interpretation', 'Analyst-assist copilots'],
+                    tech: ['Private corpora + safety constraints', 'Regression testing on edge cases', 'Latency-aware inference options']
+                },
+                w3_1: {
+                    summary: 'An AI-driven system that schedules scarce experts and supports remote diagnosis workflows end-to-end.',
+                    capabilities: ['Scheduling optimization', 'Triage and routing', 'Remote consultation workflow', 'Audit logging', 'SLA and capacity planning'],
+                    highlights: ['Maximizes utilization of top experts', 'Reduces patient wait time and operational overhead', 'Real-time workflow visibility'],
+                    scenarios: ['Telemedicine platforms', 'Specialist dispatch', 'Regional healthcare networks'],
+                    tech: ['Constraint-based scheduling', 'Human-in-the-loop medical governance', 'High-availability SaaS patterns']
+                },
+                w3_2: {
+                    summary: 'An automated competency assessment engine that evaluates diagnostic performance at scale.',
+                    capabilities: ['Rubric definition', 'Quality scoring', 'Case-based evaluation', 'Analytics reporting', 'Benchmarking'],
+                    highlights: ['Standardized evaluation across large doctor bases', 'Actionable insights for training and governance', 'Continuous improvement loop'],
+                    scenarios: ['Hospital training programs', 'Healthcare QA', 'Medical operations management'],
+                    tech: ['Scalable evaluation pipeline', 'Bias-aware scoring design', 'Audit-ready reports']
+                },
+                w5_1: {
+                    summary: 'A high-concurrency programmatic advertising engine with real-time bidding and global DSP integrations.',
+                    capabilities: ['RTB bidding architecture', 'Latency engineering', 'Partner integrations', 'Real-time feature pipelines', 'Revenue optimization'],
+                    highlights: ['Millions of QPS bidding throughput', '60+ DSP/RTB integrations', 'Stable performance under peak traffic'],
+                    scenarios: ['Programmatic buying', 'Performance marketing', 'Cross-channel ad delivery'],
+                    tech: ['High-performance concurrency', 'Real-time decisioning', 'Observability and risk controls']
+                },
+                w5_2: {
+                    summary: 'An enterprise-grade data fabric and DMP that turns behavioral signals into conversion optimization.',
+                    capabilities: ['Unified identity and profiles', 'Segmentation', 'Attribution and analytics', 'Data governance', 'Activation pipelines'],
+                    highlights: ['Deep behavioral insight at massive scale', 'Unified data layer for cross-channel activation', 'Operational tooling for growth teams'],
+                    scenarios: ['User growth', 'CRM activation', 'Ad targeting and personalization'],
+                    tech: ['Data modeling + pipelines', 'Privacy-aware governance', 'Low-latency serving for activation']
+                },
+                w6_1: {
+                    summary: 'A national airport digital OOH network integrating screens and content operations at scale.',
+                    capabilities: ['Digital signage infrastructure', 'Content scheduling', 'Network operations', 'Commercialization', 'Partner coordination'],
+                    highlights: ['60%+ airport coverage', 'Large-scale digital infrastructure modernization', 'Premium media monetization engine'],
+                    scenarios: ['Airport media networks', 'Digital OOH operations', 'High-end brand placements'],
+                    tech: ['Distributed fleet management', 'Content delivery governance', 'Reliable operations at scale']
+                },
+                w7_1: {
+                    summary: 'Strategic BI integration of ERP systems for tier-1 financial institutions.',
+                    capabilities: ['BI platform architecture', 'ERP integration', 'Report governance', 'Security and permissions', 'Enterprise delivery'],
+                    highlights: ['Transforms raw ERP data into decision intelligence', 'Stable enterprise-grade governance', 'Cross-department standardization'],
+                    scenarios: ['Finance reporting', 'Executive dashboards', 'Operational management'],
+                    tech: ['Enterprise integration patterns', 'Data lineage and governance', 'High-reliability delivery']
+                },
+                w7_2: {
+                    summary: 'Early big-data + BI fusion enabling decision support and data valorization in banking.',
+                    capabilities: ['Data fusion', 'Metric systems', 'Decision workflows', 'Optimization analytics', 'Operational dashboards'],
+                    highlights: ['Bridges analytics and operations', 'Enables rapid decision loops', 'Turns data into measurable business impact'],
+                    scenarios: ['Risk monitoring', 'Operations optimization', 'Growth and retention analytics'],
+                    tech: ['Hybrid analytics architecture', 'Feedback-loop measurement', 'Governed KPI systems']
+                }
+            },
+            zh: {
+                w1_1: {
+                    summary: '以品牌为中心的创意生产体系：把战略 Brief 转化为可规模化、可治理的全模态内容资产。',
+                    capabilities: ['品牌策略拆解', '分镜规划', '风格治理（提示词 + 数据纪律）', 'Agent 编排', '多模态资产流水线'],
+                    highlights: ['一个 Brief 生成多套叙事路线与视觉体系', '跨文/图/视频保持品牌调性一致', '版本化创意 SOP，稳定可复用'],
+                    scenarios: ['品牌战役发布', '日更矩阵内容生产', '产品故事规模化输出'],
+                    tech: ['Agent 工作流图编排', '质量闸门 + 人机协作复核', '品牌潜空间沉淀与复用']
+                },
+                w1_2: {
+                    summary: '自动化后期剪辑 Agent：在保持电影级风格一致性的同时，把交付周期压缩到极致。',
+                    capabilities: ['片段理解', '节奏/BGM 对齐', '多轨时间线组装', '规则化裁剪', '批处理吞吐工具'],
+                    highlights: ['90%+ 周期压缩，形成可复现剪辑 SOP', '自动选曲与节奏匹配', '多轨合成保持稳定叙事节奏'],
+                    scenarios: ['短视频广告变体', '社媒视频批量生产', '企业内容生产流水线'],
+                    tech: ['启发式 + 模型辅助打分', '确定性组装规则保障稳定', '异步处理与可观测状态']
+                },
+                w1_3: {
+                    summary: '内容生成到分发的一体化运营矩阵：全平台自动化发布 + 治理 + 反馈闭环。',
+                    capabilities: ['内容排期', '跨平台格式适配', '模板化创意生产', '发布自动化', '反馈数据闭环'],
+                    highlights: ['一套内容一键多平台分发，适配平台约束', '品牌安全与内容治理', '运营看板监控吞吐与效果'],
+                    scenarios: ['品牌矩阵运营', '战役放大', 'KOL 模式规模化运营'],
+                    tech: ['任务编排与失败重试', '幂等发布流水线', '数据驱动的优化闭环']
+                },
+                w2_1: {
+                    summary: '国家级舆情 OSINT 平台：面向十亿级数据的实时研判与风险信号工程。',
+                    capabilities: ['海量数据接入', '实时索引', '趋势检测', '风险信号工程', '大屏与告警'],
+                    highlights: ['毫秒级检索与关联分析', '覆盖多源社交生态', '为决策提供可操作情报'],
+                    scenarios: ['公共风险监测', '品牌声誉防御', '应急指挥中枢'],
+                    tech: ['数据织网架构', '流批一体', '弱信号检测特征工程']
+                },
+                w2_2: {
+                    summary: '舆情领域大模型微调与评测体系：提升复杂语境下的情绪、立场与语义理解准确率。',
+                    capabilities: ['数据集构建', '标注规范', '微调（LoRA/QLoRA）', '评测体系', '生产部署'],
+                    highlights: ['适应行话/反讽/隐喻等复杂表达', '对齐审核标准与输出格式', '审计反馈驱动持续学习'],
+                    scenarios: ['情感/立场分类', '跨模态解读', '分析师 Copilot'],
+                    tech: ['私有语料与安全约束', '边缘案例回归测试', '低延迟推理方案']
+                },
+                w3_1: {
+                    summary: 'AI 驱动的专家资源排期与远程诊断系统：让稀缺专家能力获得最大化调度与可视化协同。',
+                    capabilities: ['排期优化', '分诊与路由', '远程会诊流程', '审计留痕', 'SLA 与容量规划'],
+                    highlights: ['提升顶级专家利用率', '显著降低等待时间与运营成本', '全链路可视化与可追溯'],
+                    scenarios: ['互联网医疗平台', '专家派单', '区域医疗协同网络'],
+                    tech: ['约束优化排期', '医疗场景人机协作治理', '高可用 SaaS 设计']
+                },
+                w3_2: {
+                    summary: '医生专业能力 AI 测评引擎：以标准化体系实现大规模诊疗质量评估与改进闭环。',
+                    capabilities: ['评价体系定义', '质量评分', '病例评测', '分析报表', '对标与提升'],
+                    highlights: ['跨大规模医生群体的标准化评估', '输出可执行改进建议', '持续改进闭环'],
+                    scenarios: ['院内培训体系', '医疗质控', '运营管理与治理'],
+                    tech: ['可扩展评测流水线', '偏差控制评分设计', '审计级报告输出']
+                },
+                w5_1: {
+                    summary: '高并发程序化广告引擎：实时竞价与全球 DSP 集成，面向商业化增长与稳定性。',
+                    capabilities: ['RTB 架构', '低延迟工程', '合作方对接', '实时特征管线', '收益优化'],
+                    highlights: ['每秒百万级请求处理', '60+ DSP/RTB 深度集成', '峰值流量稳定性保障'],
+                    scenarios: ['程序化投放', '效果广告', '跨渠道广告分发'],
+                    tech: ['高性能并发', '实时决策', '可观测与风控体系']
+                },
+                w5_2: {
+                    summary: '企业级数据织网与 DMP：将行为信号沉淀为画像与分群，并驱动转化效率优化。',
+                    capabilities: ['统一画像', '分群策略', '归因分析', '数据治理', '激活链路'],
+                    highlights: ['海量用户深度行为洞察', '跨渠道激活统一数据底座', '增长团队可操作工具链'],
+                    scenarios: ['用户增长', 'CRM 激活', '定向投放与个性化'],
+                    tech: ['数据建模与管线', '隐私治理', '低延迟激活服务']
+                },
+                w6_1: {
+                    summary: '全国机场数字屏联播网：大规模数字基础设施与内容运营体系的融合落地。',
+                    capabilities: ['数字屏基础设施', '内容排期', '网络运维', '商业化', '生态协同'],
+                    highlights: ['覆盖 60%+ 机场资源', '基础设施现代化改造', '高端媒体商业化引擎'],
+                    scenarios: ['机场媒体网络', '数字户外运营', '高端品牌投放'],
+                    tech: ['分布式设备管理', '内容分发治理', '规模化可靠运维']
+                },
+                w7_1: {
+                    summary: '战略级 ERP BI 集成：将关键财务 ERP 数据转化为决策情报并实现企业级治理。',
+                    capabilities: ['BI 架构', 'ERP 集成', '报表治理', '安全权限', '企业级交付'],
+                    highlights: ['从 ERP 原始数据到决策可视化', '企业级权限与治理体系', '跨部门指标统一'],
+                    scenarios: ['财务报表', '管理驾驶舱', '运营管理'],
+                    tech: ['企业集成模式', '数据血缘与治理', '高可靠交付']
+                },
+                w7_2: {
+                    summary: 'BI 与大数据融合的决策支持体系：把分析能力沉到业务动作，形成可度量的价值闭环。',
+                    capabilities: ['数据融合', '指标体系', '决策工作流', '优化分析', '运营看板'],
+                    highlights: ['打通分析与运营', '缩短决策反馈链路', '把数据转化为可度量业务增长'],
+                    scenarios: ['风控监测', '运营优化', '增长与留存分析'],
+                    tech: ['混合分析架构', '闭环度量体系', '可治理 KPI 系统']
+                }
+            }
+        };
 
         function changeTheme(theme) {
             if (theme === 'default') {
@@ -483,48 +1151,187 @@
         }
 
         function updateThemeEffects(theme) {
-            // Update canvas particles color based on theme
             const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary').trim();
             particles.forEach(p => p.color = primaryColor);
+            if (theme === 'cyberpunk') {
+                particleConfig = { count: 170, speed: 0.85, linkDistance: 180, lineWidth: 0.7, driftY: 0 };
+            } else if (theme === 'zen') {
+                particleConfig = { count: 80, speed: 0.22, linkDistance: 95, lineWidth: 0.35, driftY: 0 };
+            } else if (theme === 'deepsea') {
+                particleConfig = { count: 140, speed: 0.35, linkDistance: 140, lineWidth: 0.55, driftY: 0.10 };
+            } else {
+                particleConfig = { count: 120, speed: 0.4, linkDistance: 120, lineWidth: 0.5, driftY: 0 };
+            }
+            initCanvas();
         }
 
-        async function fetchGitHubRepos() {
-            const container = document.getElementById('github-repos');
-            if (!container) return;
-            
-            try {
-                const response = await fetch('https://api.github.com/users/zyc2478/repos?sort=updated&per_page=12');
-                const repos = await response.json();
-                
-                // 筛选重点项目 (例如星标多、有描述、或者是 Skywalker 相关)
-                const featuredNames = ['SkyWalkerFactory', 'SkyWalker_DemoSite', 'Flixor.ai'];
-                const sortedRepos = repos.sort((a, b) => {
-                    const aFeatured = featuredNames.includes(a.name);
-                    const bFeatured = featuredNames.includes(b.name);
-                    if (aFeatured && !bFeatured) return -1;
-                    if (!aFeatured && bFeatured) return 1;
-                    return b.stargazers_count - a.stargazers_count;
-                });
+        function applyAdminState() {
+            document.body.classList.toggle('admin', isAdmin);
+            const adminBtn = document.getElementById('admin-btn');
+            if (adminBtn) adminBtn.textContent = isAdmin ? 'ADMIN ✓' : 'ADMIN';
+        }
 
-                container.innerHTML = sortedRepos.map(repo => `
-                    <div class="theory-card github-card" onclick="window.open('${repo.html_url}', '_blank')">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
-                            <h3 style="color: var(--primary);">${repo.name}</h3>
-                            <i class="fab fa-github" style="font-size: 1.5rem; color: var(--primary);"></i>
-                        </div>
-                        <p style="font-size: 0.9rem; line-height: 1.4;">${repo.description || 'No description provided.'}</p>
-                        <div style="margin-top: 1.5rem; display: flex; gap: 1rem; font-size: 0.75rem; color: var(--text-muted); flex-wrap: wrap;">
-                            <span><i class="fas fa-circle" style="color: ${getLanguageColor(repo.language)}; font-size: 0.6rem; margin-right: 0.3rem;"></i>${repo.language || 'N/A'}</span>
-                            <span><i class="fas fa-star" style="margin-right: 0.3rem;"></i>${repo.stargazers_count}</span>
-                            <span><i class="fas fa-code-branch" style="margin-right: 0.3rem;"></i>${repo.forks_count}</span>
-                            <span style="font-style: italic; opacity: 0.7;">Updated: ${new Date(repo.updated_at).toLocaleDateString()}</span>
-                        </div>
-                    </div>
-                `).join('');
-            } catch (error) {
-                console.error("Failed to fetch GitHub repos:", error);
-                container.innerHTML = '<p>Failed to load repositories. Please visit GitHub directly.</p>';
+        function openAdminLogin() {
+            const overlay = document.getElementById('admin-overlay');
+            const drawer = document.getElementById('admin-drawer');
+            if (!overlay || !drawer) return;
+            overlay.classList.add('open');
+            drawer.classList.add('open');
+            drawer.setAttribute('aria-hidden', 'false');
+        }
+
+        function closeAdminLogin() {
+            const overlay = document.getElementById('admin-overlay');
+            const drawer = document.getElementById('admin-drawer');
+            if (!overlay || !drawer) return;
+            overlay.classList.remove('open');
+            drawer.classList.remove('open');
+            drawer.setAttribute('aria-hidden', 'true');
+        }
+
+        function adminLogin() {
+            const u = document.getElementById('admin-user')?.value || '';
+            const p = document.getElementById('admin-pass')?.value || '';
+            if (u === 'admin' && p === 'admin@2026118') {
+                isAdmin = true;
+                localStorage.setItem('skyWalkerIsAdmin', '1');
+                applyAdminState();
+                renderAll();
+                closeAdminLogin();
+            } else {
+                alert('Invalid admin credentials');
             }
+        }
+
+        function adminLogout() {
+            isAdmin = false;
+            localStorage.removeItem('skyWalkerIsAdmin');
+            applyAdminState();
+            closeAdminLogin();
+            renderAll();
+        }
+
+        async function reloadFromResumeJson() {
+            if (!isAdmin) { openAdminLogin(); return; }
+            try {
+                const response = await fetch('./resume/resume.json');
+                resumeData = await response.json();
+                localStorage.removeItem('skyWalkerShowI18nData');
+                renderAll();
+                const indicator = document.getElementById('saveIndicator');
+                if (indicator) { indicator.innerText = 'SYNCED FROM resume.json'; indicator.style.display = 'block'; setTimeout(() => indicator.style.display = 'none', 1500); }
+            } catch (e) {
+                alert('Failed to reload resume.json');
+            }
+        }
+
+        function clearAdminEdits() {
+            if (!isAdmin) { openAdminLogin(); return; }
+            localStorage.removeItem('skyWalkerShowI18nData');
+            const indicator = document.getElementById('saveIndicator');
+            if (indicator) { indicator.innerText = 'LOCAL EDITS CLEARED'; indicator.style.display = 'block'; setTimeout(() => indicator.style.display = 'none', 1500); }
+        }
+
+        function uploadResumeJson(input) {
+            if (!isAdmin) { openAdminLogin(); return; }
+            const file = input.files?.[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = () => {
+                try {
+                    const parsed = JSON.parse(reader.result);
+                    resumeData = parsed;
+                    renderAll();
+                    localStorage.setItem('skyWalkerShowI18nData', JSON.stringify({ lang: currentLang, resumeData, qr: document.getElementById('qr-img')?.src || '' }));
+                    const indicator = document.getElementById('saveIndicator');
+                    if (indicator) { indicator.innerText = 'RESUME JSON LOADED'; indicator.style.display = 'block'; setTimeout(() => indicator.style.display = 'none', 1500); }
+                } catch (e) {
+                    alert('Invalid JSON');
+                }
+            };
+            reader.readAsText(file, 'utf-8');
+            input.value = '';
+        }
+
+        function setResumeStyle(style) {
+            if (!style || style === 'pro') {
+                document.body.removeAttribute('data-resume-style');
+            } else {
+                document.body.setAttribute('data-resume-style', style);
+            }
+            localStorage.setItem('skyWalkerResumeStyle', style);
+        }
+
+        function exportPDF() {
+            if (!isAdmin) { openAdminLogin(); return; }
+            if (!resumeData || !resumeData[currentLang]) return;
+            const d = resumeData[currentLang];
+            const title = currentLang === 'zh' ? '简历' : 'Resume';
+            const html = `
+                <html>
+                <head>
+                    <meta charset="utf-8" />
+                    <title>${title}</title>
+                    <style>
+                        *{box-sizing:border-box}
+                        body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Segoe UI',Arial,sans-serif;margin:0;padding:40px;color:#111}
+                        h1{margin:0 0 6px;font-size:28px}
+                        .sub{color:#555;margin-bottom:26px}
+                        .sec{margin-top:26px}
+                        .sec h2{font-size:16px;letter-spacing:.08em;text-transform:uppercase;color:#0aa;margin:0 0 12px}
+                        .item{padding:14px 0;border-top:1px solid #eee}
+                        .date{float:right;color:#666;font-weight:600}
+                        .role{font-weight:800}
+                        .desc{margin-top:8px;color:#333;line-height:1.6}
+                        .work{margin-top:10px;padding-left:14px}
+                        .work li{margin:6px 0;color:#444}
+                        @media print { body{padding:22px} }
+                    </style>
+                </head>
+                <body>
+                    <h1>SkyWalker · AI Pioneer</h1>
+                    <div class="sub">${d.heroSubtitle || ''}</div>
+                    <div class="sec">
+                        <h2>Timeline</h2>
+                        ${(d.sections||[]).map(s=>`
+                            <div class="item">
+                                <div class="date">${s.exp?.date||''}</div>
+                                <div class="role">${s.exp?.title||''}</div>
+                                <div class="desc">${(s.exp?.desc||'').toString().replace(/\\n/g,'<br/>')}</div>
+                                ${(s.works||[]).length?`<ul class="work">${s.works.map(w=>`<li><b>${w.title||''}</b> — ${w.desc||''}</li>`).join('')}</ul>`:''}
+                            </div>
+                        `).join('')}
+                    </div>
+                </body>
+                </html>
+            `;
+            const win = window.open('', '_blank');
+            if (!win) return;
+            win.document.open();
+            win.document.write(html);
+            win.document.close();
+            win.focus();
+            setTimeout(() => win.print(), 350);
+        }
+
+        function renderBaseProjects() {
+            const container = document.getElementById('base-projects');
+            if (!container) return;
+            const list = BASE_PROJECTS[currentLang] || [];
+            container.innerHTML = list.map(p => `
+                <div class="theory-card github-card" onclick="window.open('${p.link}', '_blank')">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; margin-bottom: 1rem;">
+                        <div>
+                            <h3 style="color: var(--primary); margin-bottom:0.4rem;">${p.name}</h3>
+                            <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.35;">${p.subtitle}</div>
+                        </div>
+                        <i class="fab fa-github" style="font-size: 1.5rem; color: var(--primary);"></i>
+                    </div>
+                    <ul class="drawer-list" style="margin-top:1rem;">
+                        ${p.highlights.map(h => `<li>${h}</li>`).join('')}
+                    </ul>
+                </div>
+            `).join('');
         }
 
         function getLanguageColor(lang) {
@@ -582,7 +1389,7 @@
                 console.error("Failed to load resume:", error);
                 // 如果加载失败，尝试从本地缓存恢复
                 const saved = localStorage.getItem('skyWalkerShowI18nData');
-                if (saved) {
+                if (saved && isAdmin) {
                     const data = JSON.parse(saved);
                     currentLang = data.lang || 'en';
                     resumeData = data.resumeData || null;
@@ -594,18 +1401,21 @@
         function toggleLanguage() {
             currentLang = currentLang === 'en' ? 'zh' : 'en';
             renderAll();
-            autoSave();
+            if (isAdmin) autoSave();
         }
 
         function renderAll() {
             updateUI();
             const container = document.getElementById('mainLayout');
             container.innerHTML = '';
+            workIndex = new Map();
             
             if (resumeData && resumeData[currentLang]) {
+                resumeData[currentLang].sections.forEach(s => (s.works || []).forEach(w => { if (w && w.id) workIndex.set(w.id, w); }));
                 resumeData[currentLang].sections.forEach(s => renderSection(s));
                 renderTheory(resumeData[currentLang].theory);
             }
+            renderBaseProjects();
         }
 
         function updateUI() {
@@ -649,7 +1459,15 @@
         function initCanvas() {
             canvas.width = window.innerWidth; canvas.height = window.innerHeight;
             particles = [];
-            for(let i = 0; i < 120; i++) particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4, size: Math.random() * 2 });
+            for(let i = 0; i < particleConfig.count; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * particleConfig.speed,
+                    vy: ((Math.random() - 0.5) * particleConfig.speed) + particleConfig.driftY,
+                    size: Math.random() * 2
+                });
+            }
         }
         function drawParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -662,10 +1480,11 @@
             for(let i = 0; i < particles.length; i++) {
                 for(let j = i + 1; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x, dy = particles[i].y - particles[j].y, dist = Math.sqrt(dx*dx + dy*dy);
-                    if(dist < 120) { 
+                    if(dist < particleConfig.linkDistance) { 
                         const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary').trim();
-                        ctx.strokeStyle = primaryColor.includes('rgba') ? primaryColor.replace(/[\d.]+\)$/, (1 - dist/120) + ')') : `rgba(${hexToRgb(primaryColor)}, ${1 - dist/120})`;
-                        ctx.lineWidth = 0.5; ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y); ctx.stroke(); 
+                        const alpha = 1 - (dist / particleConfig.linkDistance);
+                        ctx.strokeStyle = primaryColor.includes('rgba') ? primaryColor.replace(/[\d.]+\)$/, alpha + ')') : `rgba(${hexToRgb(primaryColor)}, ${alpha})`;
+                        ctx.lineWidth = particleConfig.lineWidth; ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y); ctx.stroke(); 
                     }
                 }
             }
@@ -698,14 +1517,14 @@
                 <div class="dot" onclick="this.parentElement.classList.toggle('collapsed')"></div>
                 <div class="col-left">
                     <div class="exp-card">
-                        <span class="exp-date" contenteditable="true" oninput="autoSave()">${sectionData.exp.date}</span>
-                        <h2 class="exp-title" contenteditable="true" oninput="autoSave()">${sectionData.exp.title}</h2>
-                        <p class="exp-desc" contenteditable="true" oninput="autoSave()">${sectionData.exp.desc}</p>
+                        <span class="exp-date" contenteditable="${isAdmin}" oninput="${isAdmin ? 'autoSave()' : ''}">${sectionData.exp.date}</span>
+                        <h2 class="exp-title" contenteditable="${isAdmin}" oninput="${isAdmin ? 'autoSave()' : ''}">${sectionData.exp.title}</h2>
+                        <p class="exp-desc" contenteditable="${isAdmin}" oninput="${isAdmin ? 'autoSave()' : ''}">${sectionData.exp.desc}</p>
                     </div>
                 </div>
                 <div class="col-right">
                     <div class="works-group" id="${worksGroupId}"></div>
-                    <button class="btn-add-timeline" style="margin-top:2rem; padding:1.2rem; font-size:1rem; border-style:dashed;" onclick="addNewWork('${worksGroupId}')">
+                    <button class="btn-add-timeline admin-only" style="margin-top:2rem; padding:1.2rem; font-size:1rem; border-style:dashed;" onclick="addNewWork('${worksGroupId}')">
                         <i class="fas fa-plus"></i> <span class="btn-add-work-text">${i18n[currentLang].addWork}</span>
                     </button>
                 </div>
@@ -720,19 +1539,92 @@
             const card = document.createElement('div');
             card.className = 'work-card';
             card.id = workId;
+            card.dataset.workId = workId;
             card.innerHTML = `
-                <label class="btn-upload"><i class="fas fa-camera"></i><input type="file" accept="image/*" onchange="uploadImage(this, '${workId}-img')"></label>
+                <label class="btn-upload admin-only"><i class="fas fa-camera"></i><input type="file" accept="image/*" onchange="uploadImage(this, '${workId}-img')"></label>
                 <div class="work-image">
-                    <div class="placeholder" style="${workData.image ? 'display:none' : ''}"><i class="fas ${workData.icon || 'fa-bolt'}"></i></div>
+                    <div class="placeholder" style="${workData.image ? 'display:none' : ''}"></div>
                     <img id="${workId}-img" src="${workData.image || ''}" style="${workData.image ? 'display:block' : 'display:none'}" onerror="this.style.display='none'; this.parentElement.querySelector('.placeholder').style.display='flex';">
                 </div>
                 <div class="work-content">
-                    <span class="work-tag" contenteditable="true" oninput="autoSave()">${workData.tag}</span>
-                    <h3 class="work-title" contenteditable="true" oninput="autoSave()">${workData.title}</h3>
-                    <p class="work-desc" contenteditable="true" oninput="autoSave()">${workData.desc}</p>
+                    <span class="work-tag" contenteditable="${isAdmin}" oninput="${isAdmin ? 'autoSave()' : ''}">${workData.tag}</span>
+                    <h3 class="work-title" contenteditable="${isAdmin}" oninput="${isAdmin ? 'autoSave()' : ''}">${workData.title}</h3>
+                    <p class="work-desc" contenteditable="${isAdmin}" oninput="${isAdmin ? 'autoSave()' : ''}">${workData.desc}</p>
                 </div>
             `;
             group.appendChild(card);
+
+            card.addEventListener('click', (e) => {
+                if (e.target.closest('[contenteditable="true"]')) return;
+                if (e.target.closest('.btn-upload')) return;
+                if (e.target.tagName === 'INPUT' || e.target.tagName === 'LABEL') return;
+                openWorkDrawer(workId);
+            });
+        }
+
+        function openWorkDrawer(workId) {
+            const overlay = document.getElementById('drawer-overlay');
+            const drawer = document.getElementById('drawer');
+            const drawerBody = document.getElementById('drawer-body');
+            const drawerTitle = document.getElementById('drawer-title');
+            const drawerTag = document.getElementById('drawer-tag');
+
+            if (!overlay || !drawer || !drawerBody || !drawerTitle || !drawerTag) return;
+
+            const work = workIndex.get(workId) || {};
+            const detail = (WORK_DETAILS[currentLang] && WORK_DETAILS[currentLang][workId]) || null;
+            const title = work.title || '';
+            const tag = work.tag || '';
+            drawerTitle.textContent = title;
+            drawerTag.textContent = tag;
+
+            const img = work.image ? `<img class="drawer-hero-img" src="${work.image}" alt="${title}" onerror="this.style.display='none'">` : '';
+            const summary = (detail?.summary || work.desc || '').toString();
+            const sections = buildDrawerSections(detail);
+
+            drawerBody.innerHTML = `${img}${summary ? `<div class="drawer-sub">${summary}</div>` : ''}${sections}`;
+            overlay.classList.add('open');
+            drawer.classList.add('open');
+            drawer.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDrawer() {
+            const overlay = document.getElementById('drawer-overlay');
+            const drawer = document.getElementById('drawer');
+            if (!overlay || !drawer) return;
+            overlay.classList.remove('open');
+            drawer.classList.remove('open');
+            drawer.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+
+        function buildDrawerSections(detail) {
+            const labels = currentLang === 'zh' ? {
+                capabilities: '用到的能力',
+                highlights: '项目亮点',
+                scenarios: '应用场景',
+                tech: '技术先进性'
+            } : {
+                capabilities: 'Capabilities',
+                highlights: 'Highlights',
+                scenarios: 'Use Cases',
+                tech: 'Technical Edge'
+            };
+            if (!detail) return '';
+            const ordered = ['capabilities', 'highlights', 'scenarios', 'tech'];
+            return ordered.map((key) => {
+                const arr = Array.isArray(detail[key]) ? detail[key] : [];
+                if (!arr.length) return '';
+                return `
+                    <div class="drawer-section">
+                        <h4>${labels[key]}</h4>
+                        <ul class="drawer-list">
+                            ${arr.map(x => `<li>${x}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            }).join('');
         }
 
         function uploadImage(input, imgId) {
@@ -752,8 +1644,12 @@
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    const img = document.getElementById('qr-img'); img.src = e.target.result; img.style.display = 'block';
-                    document.getElementById('qr-icon').style.display = 'none'; autoSave();
+                    const img = document.getElementById('qr-img');
+                    if (!img) return;
+                    img.src = e.target.result;
+                    img.style.display = 'block';
+                    localStorage.setItem('skyWalkerQR', img.src);
+                    autoSave();
                 }
                 reader.readAsDataURL(file);
             }
@@ -774,25 +1670,35 @@
 
         let saveTimer;
         function autoSave() {
+            if (!isAdmin) return;
             clearTimeout(saveTimer);
             saveTimer = setTimeout(() => {
                 const indicator = document.getElementById('saveIndicator');
                 indicator.innerText = i18n[currentLang].saveText;
                 indicator.style.display = 'block';
                 
+                const existingWorkById = new Map();
+                const existingSections = resumeData?.[currentLang]?.sections || [];
+                existingSections.forEach(s => (s.works || []).forEach(w => { if (w && w.id) existingWorkById.set(w.id, w); }));
+
                 // 构造当前页面的数据快照
-                const currentData = { lang: currentLang, sections: [], qr: document.getElementById('qr-img').src };
+                const qrImg = document.getElementById('qr-img');
+                const currentData = { lang: currentLang, sections: [], qr: qrImg ? qrImg.src : '' };
                 document.querySelectorAll('.row').forEach(row => {
                     const section = { exp: { date: row.querySelector('.exp-date').innerText, title: row.querySelector('.exp-title').innerText, desc: row.querySelector('.exp-desc').innerText }, works: [] };
                     row.querySelectorAll('.work-card').forEach(card => {
                         const img = card.querySelector('img');
+                        const existing = existingWorkById.get(card.id) || {};
+                        const imgSrc = (img?.src && !img.src.includes('localhost')) ? img.src : null;
+                        const iconClass = existing.icon || 'fa-bolt';
                         section.works.push({ 
-                            id: card.id, 
-                            tag: card.querySelector('.work-tag').innerText, 
-                            title: card.querySelector('.work-title').innerText, 
-                            desc: card.querySelector('.work-desc').innerText, 
-                            image: (img.src && !img.src.includes('localhost')) ? img.src : null, 
-                            icon: card.querySelector('.placeholder i').classList[1] 
+                            ...existing,
+                            id: card.id,
+                            tag: card.querySelector('.work-tag').innerText,
+                            title: card.querySelector('.work-title').innerText,
+                            desc: card.querySelector('.work-desc').innerText,
+                            image: imgSrc || existing.image || null,
+                            icon: iconClass
                         });
                     });
                     currentData.sections.push(section);
@@ -808,11 +1714,20 @@
         }
 
         window.onload = () => {
+            applyAdminState();
+            const resumeStyle = localStorage.getItem('skyWalkerResumeStyle') || 'pro';
+            const resumeStyleSelect = document.getElementById('resume-style');
+            if (resumeStyleSelect) resumeStyleSelect.value = resumeStyle;
+            setResumeStyle(resumeStyle);
             const savedTheme = localStorage.getItem('skyWalkerTheme') || 'default';
             document.getElementById('theme-switch').value = savedTheme;
             changeTheme(savedTheme);
             loadResume();
-            fetchGitHubRepos();
+            renderBaseProjects();
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDrawer(); });
+            const qrStored = localStorage.getItem('skyWalkerQR');
+            const qrImg = document.getElementById('qr-img');
+            if (qrImg && qrStored) { qrImg.src = qrStored; qrImg.style.display = 'block'; }
         };
     </script>
 </body>
