@@ -313,7 +313,7 @@
             box-shadow: 0 0 20px var(--primary);
         }
 
-        .row { display: flex; margin-bottom: 10rem; position: relative; align-items: center; perspective: 1000px; transition: all 0.5s ease; }
+        .row { display: flex; margin-bottom: 10rem; position: relative; align-items: flex-start; perspective: 1000px; transition: all 0.5s ease; }
         .row.collapsed { margin-bottom: 2rem; }
         .row.collapsed .col-right { 
             opacity: 0; 
@@ -349,25 +349,25 @@
             box-shadow: 0 0 15px var(--secondary);
         }
         
-        .col-left { flex: 1; padding-right: 6rem; text-align: right; position: relative; transition: all 0.5s ease; }
+        .col-left { flex: 1; padding-right: 6rem; text-align: right; position: relative; transition: all 0.5s ease; padding-top: 0.3rem; }
         .col-right { flex: 1; padding-left: 6rem; position: relative; transition: all 0.5s ease; }
 
         .dot {
             position: absolute;
             left: 50%;
-            top: 50%;
+            top: 90px;
             width: 24px;
             height: 24px;
             background: #000;
             border: 4px solid var(--primary);
             border-radius: 50%;
-            transform: translate(-50%, -50%);
+            transform: translateX(-50%);
             z-index: 10;
             box-shadow: 0 0 25px var(--primary);
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        .dot:hover { transform: translate(-50%, -50%) scale(1.2); box-shadow: 0 0 35px var(--primary); }
+        .dot:hover { transform: translateX(-50%) scale(1.2); box-shadow: 0 0 35px var(--primary); }
 
         .exp-card {
             background: var(--card-bg);
@@ -455,6 +455,21 @@
             height: 100%;
             object-fit: contain;
         }
+        .qr-fallback {
+            position: absolute;
+            inset: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.8rem;
+            background: rgba(255, 255, 255, 0.92);
+            color: #334155;
+            font-size: 0.9rem;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            pointer-events: none;
+        }
         @keyframes qr-scan {
             0% { transform: translateY(0); opacity: 0; }
             15% { opacity: 0.95; }
@@ -489,6 +504,8 @@
             backdrop-filter: blur(10px); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 20;
         }
         .btn-upload input { display: none; }
+        .btn-upload { display: none; }
+        body.admin .btn-upload { display: flex; }
 
         .admin-only { display: none !important; }
         body.admin .admin-only { display: flex !important; }
@@ -727,7 +744,7 @@
 
     <section id="base" class="contact-section">
         <div class="contact-container">
-            <h2 class="contact-title" id="base-title">The Base - Code & Creations</h2>
+            <h2 class="contact-title" id="base-title">CodeBase - Selected Repositories</h2>
             <p id="base-desc" style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 3rem;">My GitHub is the foundation of all my creations. Explore the code that powers these projects.</p>
             <div id="base-projects" class="theory-grid" style="margin-bottom: 3rem;"></div>
             <a href="https://github.com/zyc2478" target="_blank" class="freelance-badge" id="base-btn" style="text-decoration: none;">
@@ -741,12 +758,13 @@
             <h2 class="contact-title" id="contact-title">Connect with Me</h2>
             <div class="qr-code" onclick="document.getElementById('qr-input').click()">
                 <img id="qr-img" src="" alt="WeChat QR Code" style="display:none">
+                <div class="qr-fallback" id="qr-fallback">Click to upload QR</div>
                 <input type="file" id="qr-input" accept="image/*" onchange="uploadQR(this)">
             </div>
             <p class="collaboration-text" id="contact-sub">Scan to connect on WeChat</p>
             <div class="contact-info">
                 <p id="contact-note">备注：XX项目合作</p>
-                <p id="contact-email">Email: zyc2478@126.com</p>
+                <p id="contact-email">Email: zyc6060@gmail.com</p>
             </div>
             <p id="contact-desc" style="color: var(--text-muted); font-size: 1.1rem;">Open for high-impact collaborations and freelance opportunities in AI & Big Data.</p>
             <div class="freelance-badge" id="contact-badge">Freelance & Consulting · Global Delivery</div>
@@ -890,6 +908,67 @@
                         'Acts as the “brains” behind the demo ecosystem'
                     ],
                     link: 'https://github.com/zyc2478/SkyWalkerFactory'
+                },
+                {
+                    name: 'TalkWithAdler',
+                    subtitle: 'Philosophical dialogue product with structured thinking prompts',
+                    highlights: [
+                        'Conversation-first UX with context-aware prompt strategies',
+                        'Designed for memory, reflection, and long-form reasoning',
+                        'Suitable for personal coaching and mindset training'
+                    ],
+                    link: 'https://github.com/zyc2478/TalkWithAdler'
+                },
+                {
+                    name: 'FreeAutoClip',
+                    subtitle: 'Automated clipping toolchain for content production',
+                    highlights: [
+                        'Auto-cut + batching for high-throughput production',
+                        'Composable pipelines for packaging and distribution',
+                        'Production-focused engineering ergonomics'
+                    ],
+                    link: 'https://github.com/zyc2478/FreeAutoClip'
+                },
+                {
+                    name: 'FreeASR',
+                    subtitle: 'Affordable ASR utilities for audio-to-text workflows',
+                    highlights: [
+                        'Designed for lightweight integration in production pipelines',
+                        'Supports batch workloads and stable outputs',
+                        'Useful for subtitles and search indexing'
+                    ],
+                    link: 'https://github.com/zyc2478/FreeASR'
+                },
+                {
+                    name: 'ZanyHaha',
+                    subtitle: 'Interactive entertainment app with “unlocking” narrative',
+                    highlights: [
+                        'Interaction-driven narrative design',
+                        'Unlock-based engagement loop',
+                        'Mobile-first product delivery'
+                    ],
+                    link: 'https://github.com/zyc2478/ZanyHaha'
+                },
+                {
+                    name: 'SmokyStreets',
+                    subtitle: 'Public-health themed game for anti-smoking education',
+                    highlights: [
+                        'Gameplay loop built around strategy and behavior change',
+                        'Community-style progression and mission system',
+                        'Designed for education + retention'
+                    ],
+                    link: 'https://github.com/zyc2478/SmokyStreets'
+                },
+                {
+                    name: 'bbd_bi_server',
+                    subtitle: 'PPDAI P2P asset recognition + AI risk profiling + programmatic allocation',
+                    highlights: [
+                        'Automates recognition and ingestion of PPDAI P2P assets into structured profiles',
+                        'AI-driven borrower/asset profiling with default-rate estimation + confidence scoring',
+                        'Programmatic allocation pipeline delivers 10+ points higher returns than manual selection',
+                        'Designed with governed decisioning: audit trail, rules + model iteration, reproducible evaluation'
+                    ],
+                    link: 'https://github.com/zyc2478/bbd_bi_server'
                 }
             ],
             zh: [
@@ -966,6 +1045,67 @@
                         '作为演示生态的“智能中枢”'
                     ],
                     link: 'https://github.com/zyc2478/SkyWalkerFactory'
+                },
+                {
+                    name: 'TalkWithAdler',
+                    subtitle: '与“阿德勒”对话：结构化思维与自我洞察',
+                    highlights: [
+                        '对话式产品体验：以问题引导与上下文策略驱动深度思考',
+                        '面向长期记忆、复盘与内省的内容组织方式',
+                        '适用于个人成长教练与心理/认知训练场景'
+                    ],
+                    link: 'https://github.com/zyc2478/TalkWithAdler'
+                },
+                {
+                    name: 'FreeAutoClip',
+                    subtitle: '自动化剪辑工具链（高吞吐生产）',
+                    highlights: [
+                        '自动切片 + 批处理，提升内容生产吞吐',
+                        '可组合的流水线：包装、分发与复用',
+                        '强调工程可用性与稳定输出'
+                    ],
+                    link: 'https://github.com/zyc2478/FreeAutoClip'
+                },
+                {
+                    name: 'FreeASR',
+                    subtitle: '轻量级 ASR 工具（音频转文本）',
+                    highlights: [
+                        '面向生产流水线的轻量集成能力',
+                        '支持批量任务与稳定输出',
+                        '适用于字幕生成与检索索引'
+                    ],
+                    link: 'https://github.com/zyc2478/FreeASR'
+                },
+                {
+                    name: 'ZanyHaha',
+                    subtitle: '互动娱乐应用：以“解锁式体验”驱动留存',
+                    highlights: [
+                        '交互驱动叙事：点击/选择/解锁的核心机制',
+                        '以意外反转与愉悦反馈构建内容节奏',
+                        '移动端优先的产品交付'
+                    ],
+                    link: 'https://github.com/zyc2478/ZanyHaha'
+                },
+                {
+                    name: 'SmokyStreets',
+                    subtitle: '公共健康科普游戏：反吸烟与环境净化',
+                    highlights: [
+                        '以策略与道具系统驱动行为改变',
+                        '社区化成长与任务体系',
+                        '教育性与可玩性兼顾的留存设计'
+                    ],
+                    link: 'https://github.com/zyc2478/SmokyStreets'
+                },
+                {
+                    name: 'bbd_bi_server',
+                    subtitle: '拍拍贷 P2P 标的识别 + AI 画像 + 违约率/置信度程序化投放系统',
+                    highlights: [
+                        '自动识别拍拍贷 P2P 标的并结构化沉淀资产画像，形成可计算的标的特征体系',
+                        '基于 AI 分析借款人/标的画像，输出违约率预测 + 置信度评分，驱动程序化决策链',
+                        '程序化投放相比人工挑选收益提升 10 个点以上（策略化、可回溯、可评测）',
+                        '支持治理与迭代：审计链路、规则+模型协同、数据闭环持续优化'
+                    ],
+                    link: 'https://github.com/zyc2478/bbd_bi_server'
                 }
             ]
         };
@@ -1034,6 +1174,13 @@
                     highlights: ['Deep behavioral insight at massive scale', 'Unified data layer for cross-channel activation', 'Operational tooling for growth teams'],
                     scenarios: ['User growth', 'CRM activation', 'Ad targeting and personalization'],
                     tech: ['Data modeling + pipelines', 'Privacy-aware governance', 'Low-latency serving for activation']
+                },
+                w5_3: {
+                    summary: 'A flash-sale commerce platform engineered for holiday campaigns and extreme traffic spikes, with end-to-end reliability and governance.',
+                    capabilities: ['High-concurrency inventory reservation', 'Catalog & pricing governance', 'Order/payment workflow', 'Risk control and anti-bot', 'Observability and capacity planning'],
+                    highlights: ['Inventory correctness under burst traffic (reservation + idempotency)', 'Peak protection via queueing, rate-limit, and circuit-breakers', 'Stable GMV-scale operations with audit-ready traceability'],
+                    scenarios: ['Holiday flash sales', 'Limited-edition drops', 'Big promotion campaigns', 'High-frequency voucher events'],
+                    tech: ['Inventory: pre-deduction + async confirm', 'Order: sharded IDs + transactional outbox patterns', 'Cache + MQ + dynamic throttling']
                 },
                 w6_1: {
                     summary: 'A national airport digital OOH network integrating screens and content operations at scale.',
@@ -1120,6 +1267,13 @@
                     highlights: ['海量用户深度行为洞察', '跨渠道激活统一数据底座', '增长团队可操作工具链'],
                     scenarios: ['用户增长', 'CRM 激活', '定向投放与个性化'],
                     tech: ['数据建模与管线', '隐私治理', '低延迟激活服务']
+                },
+                w5_3: {
+                    summary: '爆品秒杀商城的大促高并发架构：以库存一致性为核心，用削峰填谷与全链路可观测保障极端流量下稳定交付。',
+                    capabilities: ['库存预占/扣减一致性', '货架与价格治理', '订单/支付链路', '风控反刷与限流', '容量规划与压测体系'],
+                    highlights: ['极端峰值下库存正确性（预占 + 幂等 + 最终一致）', '队列化削峰、熔断降级与动态限流', 'GMV 10 亿+ 级别可持续运营与审计追溯'],
+                    scenarios: ['节假日秒杀大促', '爆品限量抢购', '优惠券/补贴活动', '高频活动运营'],
+                    tech: ['库存：预扣减 + 异步确认', '订单：分库分表 + 全链路幂等', '缓存+MQ+多级限流+热点隔离']
                 },
                 w6_1: {
                     summary: '全国机场数字屏联播网：大规模数字基础设施与内容运营体系的融合落地。',
@@ -1356,14 +1510,14 @@
                 heroTitle: "ARCHITECTING THE FUTURE",
                 heroSubtitle: "Multimodal AIGC Specialist · Big Data Architect · SaaS & E-commerce Expert · AI Agent Orchestrator · Model Training Expert",
                 heroQuote: '"Driving the next generation of intelligence through multimodal synergy and autonomous agent orchestration."',
-                navTimeline: "TIMELINE", navTheory: "THEORY", navBase: "THE BASE", navContact: "CONNECT",
+                navTimeline: "TIMELINE", navTheory: "INSIGHTS", navBase: "CODEBASE", navContact: "CONNECT",
                 langBtn: "中文", addChapter: "INITIALIZE NEW CHAPTER", addWork: "ADD PROJECT RESULT",
                 contactTitle: "Connect with Me", contactSub: "Scan to connect on WeChat",
                 contactDesc: "Open for high-impact collaborations and freelance opportunities in AI & Big Data.",
                 contactBadge: "Freelance & Consulting · Global Delivery",
                 saveText: "DATA SYNCED",
-                theoryTitle: "AI Theories & Perspectives",
-                baseTitle: "The Base - Code & Creations",
+                theoryTitle: "Unique Insights",
+                baseTitle: "CodeBase - Selected Repositories",
                 baseDesc: "My GitHub is the foundation of all my creations. Explore the code that powers these projects.",
                 baseBtn: "<i class=\"fab fa-github\"></i> Visit GitHub Profile"
             },
@@ -1371,14 +1525,14 @@
                 heroTitle: "重塑智能边界",
                 heroSubtitle: "全模态 AIGC 专家 · 大数据架构师 · SaaS 与电商系统专家 · AI Agent 自动化专家 · 模型训练专家",
                 heroQuote: "“通过多模态协同与自主 Agent 编排，驱动下一代智能革命。”",
-                navTimeline: "时间轴", navTheory: "理论", navBase: "基地", navContact: "联系",
+                navTimeline: "时间轴", navTheory: "独家观点", navBase: "代码库", navContact: "联系",
                 langBtn: "English", addChapter: "初始化新篇章", addWork: "添加项目成果",
                 contactTitle: "连接未来 · 与我合作", contactSub: "扫描二维码添加微信",
                 contactDesc: "期待在 AIGC 与大数据领域展开深度合作，欢迎兼职邀约。",
                 contactBadge: "专注兼职合作 · 全球交付",
                 saveText: "数据已同步",
-                theoryTitle: "AI 理论与经典观点",
-                baseTitle: "The Base - 代码基地与创作",
+                theoryTitle: "独家观点",
+                baseTitle: "CodeBase - 代码基地与代表作",
                 baseDesc: "我的 GitHub 是所有创作的基石。在这里，探索驱动这些项目的代码。",
                 baseBtn: "<i class=\"fab fa-github\"></i> 访问 GitHub"
             }
@@ -1549,7 +1703,7 @@
                 <label class="btn-upload admin-only"><i class="fas fa-camera"></i><input type="file" accept="image/*" onchange="uploadImage(this, '${workId}-img')"></label>
                 <div class="work-image">
                     <div class="placeholder" style="${workData.image ? 'display:none' : ''}"></div>
-                    <img id="${workId}-img" src="${workData.image || ''}" style="${workData.image ? 'display:block' : 'display:none'}" onerror="this.style.display='none'; this.parentElement.querySelector('.placeholder').style.display='flex';">
+                    <img id="${workId}-img" data-src-original="${workData.image || ''}" src="${workData.image || ''}" style="${workData.image ? 'display:block' : 'display:none'}" onerror="handleWorkImageError(this)">
                 </div>
                 <div class="work-content">
                     <span class="work-tag" contenteditable="${isAdmin}" oninput="${isAdmin ? 'autoSave()' : ''}">${workData.tag}</span>
@@ -1565,6 +1719,20 @@
                 if (e.target.tagName === 'INPUT' || e.target.tagName === 'LABEL') return;
                 openWorkDrawer(workId);
             });
+        }
+
+        function handleWorkImageError(imgEl) {
+            const original = imgEl.getAttribute('data-src-original') || imgEl.src || '';
+            if (!imgEl.dataset.proxyTried && original) {
+                imgEl.dataset.proxyTried = '1';
+                const urlNoProto = original.replace(/^https?:\/\//, '');
+                imgEl.src = `https://images.weserv.nl/?url=${encodeURIComponent(urlNoProto)}&w=1200&output=jpg&q=85`;
+                imgEl.style.display = 'block';
+                return;
+            }
+            imgEl.style.display = 'none';
+            const ph = imgEl.parentElement?.querySelector('.placeholder');
+            if (ph) ph.style.display = 'flex';
         }
 
         function openWorkDrawer(workId) {
@@ -1653,11 +1821,14 @@
                     if (!img) return;
                     img.src = e.target.result;
                     img.style.display = 'block';
+                    const fb = document.getElementById('qr-fallback');
+                    if (fb) fb.style.display = 'none';
                     localStorage.setItem('skyWalkerQR', img.src);
                     autoSave();
                 }
                 reader.readAsDataURL(file);
             }
+            input.value = '';
         }
 
         function addNewTimelineSection() {
@@ -1732,7 +1903,8 @@
             document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDrawer(); });
             const qrStored = localStorage.getItem('skyWalkerQR');
             const qrImg = document.getElementById('qr-img');
-            if (qrImg && qrStored) { qrImg.src = qrStored; qrImg.style.display = 'block'; }
+            const qrFallback = document.getElementById('qr-fallback');
+            if (qrImg && qrStored) { qrImg.src = qrStored; qrImg.style.display = 'block'; if (qrFallback) qrFallback.style.display = 'none'; }
         };
     </script>
 </body>
