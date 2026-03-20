@@ -179,8 +179,8 @@
                 "tag": "SkyWalker Original · Unique Perspective"
             },
             {
-                "title": "Open-Source Driven AIGC Architecture: n8n + Open Interpreter",
-                "desc": "A practical, implementable blueprint for a powerful automated AIGC pipeline. This article details how to use n8n as a central orchestration hub to manage and trigger tools like Open Interpreter. This architecture enables a fully automated production line, from data ingestion and processing to the final generation of sophisticated, multimodal content, all built on a flexible and scalable open-source stack.",
+                "title": "Open-Source Driven AIGC Architecture: n8n + OpenClaw",
+                "desc": "A practical, implementable blueprint for a powerful automated AIGC pipeline. This article details how to use n8n as a central orchestration hub to manage and trigger tools like OpenClaw. This architecture enables a fully automated production line, from data ingestion and processing to the final generation of sophisticated, multimodal content, all built on a flexible and scalable open-source stack.",
                 "tag": "SkyWalker Original · Unique Perspective"
             },
             {
@@ -380,8 +380,8 @@
                 "tag": "天行原创 · 独家观点"
             },
             {
-                "title": "开源驱动的 AIGC 架构：n8n + Open Interpreter",
-                "desc": "一个强大、可落地的自动化 AIGC 流水线蓝图。本文详细介绍了如何使用 n8n 作为中心编排枢纽，来管理和触发像 Open Interpreter 这样的工具。该架构能够实现从数据提取、处理到最终生成复杂多模态内容的全自动化生产线，全部建立在灵活且可扩展的开源技术栈之上。",
+                "title": "开源驱动的 AIGC 架构：n8n + OpenClaw",
+                "desc": "一个强大、可落地的自动化 AIGC 流水线蓝图。本文详细介绍了如何使用 n8n 作为中心编排枢纽，来管理和触发像 OpenClaw 这样的工具。该架构能够实现从数据提取、处理到最终生成复杂多模态内容的全自动化生产线，全部建立在灵活且可扩展的开源技术栈之上。",
                 "tag": "天行原创 · 独家观点"
             },
             {
