@@ -179,8 +179,9 @@
             },
             {
                 "title": "Business-Driven AI: Beyond the 'Silver Bullet' Myth",
-                "desc": "In the real world, AI is not a silver bullet. While marketing hype suggests AI solves everything, the reality requires experts to 'get their hands dirty.' True transformation happens when business rules are encoded into the heart of the AI. Success is measured by the integration of AI into actual business decision chains, creating tangible value beyond simple tool usage. (Note: Case study visuals showing AI integration into enterprise workflows recommended.)",
-                "tag": "SkyWalker Original · Unique Perspective"
+                "desc": "In the real world, AI is not a silver bullet. While marketing hype suggests AI solves everything, the reality requires experts to 'get their hands dirty.' True transformation happens when business rules are encoded into the heart of the AI. Success is measured by the integration of AI into actual business decision chains, creating tangible value beyond simple tool usage.<br><br>The 'Silver Bullet' myth often leads to a disconnect between AI potential and actual ROI. To bridge this gap, we must focus on 'Human-in-the-loop' systems where AI augments expert judgment rather than attempting to replace it entirely. This approach ensures that the AI remains grounded in operational reality and can handle the edge cases that pure automated systems often fail to address.",
+                "tag": "SkyWalker Original · Unique Perspective",
+                "image": "https://images.unsplash.com/photo-1454165833767-027ee6a7c6ec?auto=format&fit=crop&w=1200&q=90"
             }
         ]
     },
@@ -364,8 +365,9 @@
             },
             {
                 "title": "业务驱动的 AI：超越“银弹”神话",
-                "desc": "在现实世界中，AI 不是万能灵药。虽然营销话术宣称 AI 能解决一切，但实际落地需要专家亲自动手。真正的转型发生在业务规则被编码进 AI 核心之时。AI 的成功应以其与实际业务决策链的融合度来衡量，从而创造超越单纯工具使用的切身价值。（备注：建议配合展示 AI 融入企业实际工作流的案例视觉效果。）",
-                "tag": "天行原创 · 独家观点"
+                "desc": "在现实世界中，AI 不是万能灵药。虽然营销话术宣称 AI 能解决一切，但实际落地需要专家亲自动手。真正的转型发生在业务规则被编码进 AI 核心之时。AI 的成功应以其与实际业务决策链的融合度来衡量，从而创造超越单纯工具使用的切身价值。<br><br>“银弹”神话往往导致 AI 潜力与实际投资回报率（ROI）之间的脱节。为了弥合这一差距，我们必须专注于“人机协作”（Human-in-the-loop）系统，让 AI 增强专家的判断力，而不是试图完全取代。这种方法确保了 AI 始终植根于操作现实，并能够处理纯自动化系统往往无法解决的边缘案例。",
+                "tag": "天行原创 · 独家观点",
+                "image": "https://images.unsplash.com/photo-1454165833767-027ee6a7c6ec?auto=format&fit=crop&w=1200&q=90"
             }
         ]
     }
