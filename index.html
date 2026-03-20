@@ -173,14 +173,34 @@
 
         .row { display: flex; margin-bottom: 10rem; position: relative; align-items: center; perspective: 1000px; transition: all 0.5s ease; }
         .row.collapsed { margin-bottom: 2rem; }
-        .row.collapsed .col-left, .row.collapsed .col-right { 
+        .row.collapsed .col-right { 
             opacity: 0; 
             max-height: 0; 
             overflow: hidden; 
             pointer-events: none; 
             margin: 0;
             padding: 0;
-            transform: scale(0.9) translateY(-20px);
+            transform: scale(0.9) translateX(50px);
+        }
+        .row.collapsed .dot::after {
+            content: '<';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .row:not(.collapsed) .dot::after {
+            content: '>';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: bold;
         }
         .row.collapsed .dot {
             border-color: var(--secondary);
@@ -257,9 +277,33 @@
 
         .contact-section { padding: 8rem 2rem; text-align: center; border-top: 1px solid var(--border); }
         .contact-container { max-width: 800px; margin: 0 auto; background: var(--card-bg); padding: 4rem; border-radius: 3rem; border: 1px solid var(--border); backdrop-filter: blur(20px); }
-        .qr-placeholder { width: 220px; height: 220px; background: #fff; margin: 0 auto 2.5rem; padding: 10px; border-radius: 1.5rem; display: flex; align-items: center; justify-content: center; cursor: pointer; }
-        .qr-placeholder img { width: 100%; height: 100%; object-fit: contain; }
-        .qr-placeholder i { font-size: 4rem; color: #000; }
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 2rem;
+            background: #fff;
+            padding: 10px;
+            border-radius: 1rem;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+        .qr-code img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .contact-info {
+            margin-bottom: 2rem;
+        }
+        #contact-name {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        #contact-email {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
         .freelance-badge { display: inline-block; background: linear-gradient(135deg, var(--primary), var(--secondary)); padding: 0.8rem 2.5rem; border-radius: 999px; font-weight: 800; margin-top: 1.5rem; }
 
         .btn-add-timeline {
@@ -408,12 +452,13 @@
     <section id="contact" class="contact-section">
         <div class="contact-container">
             <h2 class="contact-title" id="contact-title">Connect with Me</h2>
-            <div class="qr-placeholder" onclick="document.getElementById('qr-input').click()">
-                <i class="fas fa-qrcode" id="qr-icon"></i>
-                <img id="qr-img" style="display:none">
-                <input type="file" id="qr-input" accept="image/*" onchange="uploadQR(this)">
+            <div class="qr-code">
+                <img src="https://i.ibb.co/XF33B6q/wechat-qr.jpg" alt="WeChat QR Code">
             </div>
-            <p class="collaboration-text" id="contact-sub">Scan to connect on WeChat</p>
+            <div class="contact-info">
+                <p id="contact-name">凤天行 / SkyWalker</p>
+                <p id="contact-email">Email: zyc2478@gmail.com</p>
+            </div>
             <p id="contact-desc" style="color: var(--text-muted); font-size: 1.1rem;">Open for high-impact collaborations and freelance opportunities in AI & Big Data.</p>
             <div class="freelance-badge" id="contact-badge">Freelance & Consulting · Global Delivery</div>
         </div>
