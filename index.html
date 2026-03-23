@@ -757,17 +757,17 @@
         <div class="contact-container">
             <h2 class="contact-title" id="contact-title">Connect with Me</h2>
             <div class="qr-code" onclick="document.getElementById('qr-input').click()">
-                <img id="qr-img" src="" alt="WeChat QR Code" style="display:none">
-                <div class="qr-fallback" id="qr-fallback">Click to upload QR</div>
+                <img id="qr-img" src="./wechat_qr.png" alt="WeChat QR Code">
+                <div class="qr-fallback" id="qr-fallback" style="display:none">Click to upload QR</div>
                 <input type="file" id="qr-input" accept="image/*" onchange="uploadQR(this)">
             </div>
             <p class="collaboration-text" id="contact-sub">Scan to connect on WeChat</p>
             <div class="contact-info">
-                <p id="contact-note">备注：XX项目合作</p>
+                <p id="contact-note">备注： XX项目合作</p>
                 <p id="contact-email">Email: zyc6060@gmail.com</p>
             </div>
-            <p id="contact-desc" style="color: var(--text-muted); font-size: 1.1rem;">Open for high-impact collaborations and freelance opportunities in AI & Big Data.</p>
-            <div class="freelance-badge" id="contact-badge">Freelance & Consulting · Global Delivery</div>
+            <p id="contact-desc" style="display:none; color: var(--text-muted); font-size: 1.1rem;">Open for high-impact collaborations and freelance opportunities in AI & Big Data.</p>
+            <div class="freelance-badge" id="contact-badge" style="display:none;">Freelance & Consulting · Global Delivery</div>
         </div>
     </section>
 
@@ -827,7 +827,7 @@
     </aside>
 
     <script>
-        let currentLang = 'en';
+        let currentLang = 'zh';
         let resumeData = null;
         let workIndex = new Map();
         let particleConfig = { count: 120, speed: 0.4, linkDistance: 120, lineWidth: 0.5, driftY: 0 };
@@ -1512,7 +1512,7 @@
                 heroQuote: '"Driving the next generation of intelligence through multimodal synergy and autonomous agent orchestration."',
                 navTimeline: "TIMELINE", navTheory: "INSIGHTS", navBase: "CODEBASE", navContact: "CONNECT",
                 langBtn: "中文", addChapter: "INITIALIZE NEW CHAPTER", addWork: "ADD PROJECT RESULT",
-                contactTitle: "Connect with Me", contactSub: "Scan to connect on WeChat",
+                contactTitle: "Connect to Future · Collaborate with Me", contactSub: "Scan QR to add WeChat",
                 contactDesc: "Open for high-impact collaborations and freelance opportunities in AI & Big Data.",
                 contactBadge: "Freelance & Consulting · Global Delivery",
                 saveText: "DATA SYNCED",
